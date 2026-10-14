@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Aging Apprentice: Demographic Transformation (2014–2024)",
+    "subtitle": "Streamgraph illustrating the shift from teenage school leavers to adult apprentices (25+). Source: NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "data/age_cohort_timeseries.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "opacity": 0.88
+      },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Calendar Year",
+          "axis": {"labelAngle": 0}
+        },
+        "y": {
+          "field": "Share_Pct",
+          "type": "quantitative",
+          "stack": "center",
+          "axis": null
+        },
+        "color": {
+          "field": "Age_Cohort",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Under 19 (School Leavers)",
+              "20 to 24 Years",
+              "25 to 44 Years (Adult)",
+              "45+ Years (Career Changers)"
+            ],
+            "range": ["#38bdf8", "#818cf8", "#f59e0b", "#f43f5e"]
+          },
+          "legend": {"title": "Age Demographic", "orient": "bottom"}
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year"},
+          {"field": "Age_Cohort", "type": "nominal", "title": "Cohort"},
+          {"field": "Share_Pct", "type": "quantitative", "format": ".1f", "title": "Share of Intake (%)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2014, "text": "2014: School leavers formed 38.5% of apprentices"},
+          {"year": 2024, "text": "2024: Adult apprentices (25+) now represent 36.0%"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f172a",
+        "dy": -120
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif"
+    }
+  }
+}

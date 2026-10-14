@@ -1,0 +1,111 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Escalation of Skill Shortages: 2021 vs 2024",
+    "subtitle": "Slopegraph tracking trade occupation shifts across JSA Shortage Priority ratings. Source: Jobs and Skills Australia",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 420,
+  "data": {
+    "url": "data/jsa_occupation_shortages.csv"
+  },
+  "transform": [
+    {"filter": "datum.Priority_Tier != 'Tier 4 No Shortage'"},
+    {
+      "fold": ["JSA_Shortage_2021", "JSA_Shortage_2024"],
+      "as": ["Assessment_Year", "Shortage_Rating"]
+    },
+    {
+      "calculate": "datum.Assessment_Year == 'JSA_Shortage_2021' ? '2021 (Baseline)' : '2024 (Current)'",
+      "as": "Year_Label"
+    },
+    {
+      "calculate": "datum.Shortage_Rating == 'No Shortage' ? 1 : datum.Shortage_Rating == 'Regional Shortage' ? 2 : 3",
+      "as": "Severity_Level"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2,
+        "opacity": 0.75
+      },
+      "encoding": {
+        "x": {
+          "field": "Year_Label",
+          "type": "nominal",
+          "title": null,
+          "scale": {"padding": 0.3}
+        },
+        "y": {
+          "field": "Severity_Level",
+          "type": "quantitative",
+          "title": "Shortage Severity Rating",
+          "scale": {"domain": [0.8, 3.2]},
+          "axis": {
+            "values": [1, 2, 3],
+            "labelExpr": "datum.value == 1 ? 'No Shortage' : datum.value == 2 ? 'Regional Shortage' : 'National Shortage'"
+          }
+        },
+        "detail": {"field": "Occupation_Title"},
+        "color": {
+          "field": "Trade_Category",
+          "type": "nominal",
+          "scale": {"scheme": "tableau10"},
+          "legend": {"title": "Trade Category", "orient": "bottom"}
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 60, "opacity": 0.9},
+      "encoding": {
+        "x": {"field": "Year_Label", "type": "nominal"},
+        "y": {"field": "Severity_Level", "type": "quantitative"},
+        "color": {"field": "Trade_Category", "type": "nominal"},
+        "tooltip": [
+          {"field": "Occupation_Title", "type": "nominal", "title": "Occupation"},
+          {"field": "Trade_Category", "type": "nominal", "title": "Category"},
+          {"field": "JSA_Shortage_2021", "type": "nominal", "title": "2021 Status"},
+          {"field": "JSA_Shortage_2024", "type": "nominal", "title": "2024 Status"},
+          {"field": "In_Training_Count", "type": "quantitative", "format": ",", "title": "Active in Training"},
+          {"field": "Projected_5Yr_Growth_Pct", "type": "quantitative", "format": "+.1f", "title": "5-Yr Projected Demand (%)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": "2024 (Current)", "level": 3, "text": "16 Trade Fields in Chronic National Shortage"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "dy": -15,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#b91c1c"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "nominal"},
+        "y": {"field": "level", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "gridColor": "#f1f5f9"
+    }
+  }
+}

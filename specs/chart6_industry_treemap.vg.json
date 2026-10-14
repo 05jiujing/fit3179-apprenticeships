@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Treemap of Australian Apprenticeships by Industry Division (ANZSIC)",
+  "width": 780,
+  "height": 420,
+  "padding": 5,
+  "autosize": "fit",
+  "title": {
+    "text": "Apprentice Distribution Across 19 Australian Industry Divisions (2024)",
+    "subtitle": "Tile area encodes total active apprentice population; color saturation encodes Trade Share (%). Source: NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Plus Jakarta Sans, sans-serif",
+    "anchor": "start"
+  },
+  "data": [
+    {
+      "name": "industries",
+      "url": "data/ncver_industry_trades.csv",
+      "format": {"type": "csv", "parse": {"Active_Apprentices": "number", "Trades_Share_Pct": "number", "Female_Share_Pct": "number"}},
+      "transform": [
+        {
+          "type": "nest",
+          "keys": ["Sector_Category"]
+        },
+        {
+          "type": "treemap",
+          "field": "Active_Apprentices",
+          "sort": {"field": "value", "order": "descending"},
+          "round": true,
+          "method": "squarify",
+          "ratio": 1.6,
+          "size": [{"signal": "width"}, {"signal": "height"}]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "linear",
+      "domain": [0, 100],
+      "range": ["#e0f2fe", "#0369a1"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "industries"},
+      "encode": {
+        "enter": {
+          "stroke": {"value": "#ffffff"},
+          "strokeWidth": {"value": 2}
+        },
+        "update": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"},
+          "fill": [
+            {"test": "!datum.children", "scale": "color", "field": "Trades_Share_Pct"},
+            {"value": "#f8fafc"}
+          ],
+          "tooltip": {
+            "signal": "datum.children ? null : {'Industry': datum.Industry_Name, 'Sector': datum.Sector_Category, 'Active Apprentices': format(datum.Active_Apprentices, ','), 'Trade Share (%)': format(datum.Trades_Share_Pct, '.1f') + '%', 'Female Share (%)': format(datum.Female_Share_Pct, '.1f') + '%', 'Median Apprentice Wage': '$' + datum.Median_Weekly_Training_Wage_AUD + ' /wk'}"
+          }
+        },
+        "hover": {
+          "fillOpacity": {"value": 0.8}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "industries"},
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "font": {"value": "Plus Jakarta Sans, sans-serif"},
+          "fontSize": {"value": 11},
+          "fontWeight": {"value": 600},
+          "fill": [
+            {"test": "datum.Trades_Share_Pct > 50", "value": "#ffffff"},
+            {"value": "#0f172a"}
+          ],
+          "baseline": {"value": "middle"},
+          "align": {"value": "center"}
+        },
+        "update": {
+          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
+          "y": {"signal": "0.5 * (datum.y0 + datum.y1)"},
+          "text": [
+            {"test": "(datum.x1 - datum.x0) > 75 && (datum.y1 - datum.y0) > 35", "field": "Industry_Name"},
+            {"value": ""}
+          ],
+          "fillOpacity": [
+            {"test": "(datum.x1 - datum.x0) > 75 && (datum.y1 - datum.y0) > 35", "value": 1},
+            {"value": 0}
+          ]
+        }
+      }
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Trade Concentration (%)",
+      "orient": "bottom-right",
+      "direction": "horizontal",
+      "gradientLength": 150,
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "labelFont": "Plus Jakarta Sans, sans-serif"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Quarterly Inflow vs Attrition: The Policy Subsidy Cycle",
+    "subtitle": "Banded divergence showing quarterly commencements vs cancellations/withdrawals (2005–2024). Source: NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 380,
+  "data": {
+    "url": "data/ncver_timeseries_2000_2024.csv"
+  },
+  "transform": [
+    {"filter": "datum.Year >= 2005"},
+    {"calculate": "datum.Quarterly_Commencements - datum.Cancellations_Withdrawals", "as": "Net_Pipeline_Growth"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.45,
+        "line": {"color": "#0284c7", "width": 1.5}
+      },
+      "encoding": {
+        "x": {
+          "field": "Period",
+          "type": "nominal",
+          "title": "Year & Quarter",
+          "axis": {
+            "labelAngle": -45,
+            "values": ["2005-Q1", "2008-Q1", "2011-Q1", "2014-Q1", "2017-Q1", "2020-Q1", "2023-Q1", "2024-Q4"]
+          }
+        },
+        "y": {
+          "field": "Net_Pipeline_Growth",
+          "type": "quantitative",
+          "title": "Net Quarterly Additions (Commencements - Cancellations)"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Net_Pipeline_Growth >= 0",
+            "value": "#0284c7"
+          },
+          "value": "#ef4444"
+        }
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#64748b", "strokeDash": [4, 4]},
+      "encoding": {
+        "y": {"datum": 0}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"period": "2021-Q2", "val": 16500, "text": "BAC 50% Wage Subsidy: Net peak (+16.5k/qtr)"},
+          {"period": "2015-Q3", "val": 3500, "text": "Post-Reform Contraction"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f172a",
+        "dy": -10
+      },
+      "encoding": {
+        "x": {"field": "period", "type": "nominal"},
+        "y": {"field": "val", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "gridColor": "#f1f5f9"
+    }
+  }
+}

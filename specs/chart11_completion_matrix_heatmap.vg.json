@@ -1,0 +1,91 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Completion Gauntlet: Success Rates Across Sectors and Qualification Levels",
+    "subtitle": "Cohort completion percentages by Australian Qualification Framework (AQF) level. Source: NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 380,
+  "data": {
+    "url": "data/completion_matrix_data.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "Sector",
+          "type": "nominal",
+          "title": "Vocational Discipline",
+          "axis": {"labelAngle": -30}
+        },
+        "y": {
+          "field": "Qualification_Level",
+          "type": "nominal",
+          "title": "AQF Level",
+          "sort": ["Certificate II", "Certificate III (Trade)", "Certificate IV", "Diploma & Above"]
+        },
+        "color": {
+          "field": "Completion_Rate_Pct",
+          "type": "quantitative",
+          "title": "Completion Rate (%)",
+          "scale": {
+            "type": "linear",
+            "domain": [40, 75],
+            "scheme": "redyellowgreen"
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 180
+          }
+        },
+        "tooltip": [
+          {"field": "Sector", "type": "nominal", "title": "Sector"},
+          {"field": "Qualification_Level", "type": "nominal", "title": "Qualification Level"},
+          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 700,
+        "font": "Plus Jakarta Sans, sans-serif"
+      },
+      "encoding": {
+        "x": {"field": "Sector", "type": "nominal"},
+        "y": {
+          "field": "Qualification_Level",
+          "type": "nominal",
+          "sort": ["Certificate II", "Certificate III (Trade)", "Certificate IV", "Diploma & Above"]
+        },
+        "text": {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f"},
+        "color": {
+          "condition": {
+            "test": "datum.Completion_Rate_Pct < 50 || datum.Completion_Rate_Pct > 68",
+            "value": "#0f172a"
+          },
+          "value": "#1e293b"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "grid": false
+    }
+  }
+}

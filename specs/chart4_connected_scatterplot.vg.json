@@ -1,0 +1,113 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Apprenticeship Phase Trajectory: Commencements vs Completions (2000–2024)",
+    "subtitle": "Connected scatterplot tracking quarterly pipeline momentum across 4 policy eras. Source: NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 420,
+  "data": {"url": "data/ncver_timeseries_2000_2024.csv"},
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.2,
+        "opacity": 0.75,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "Quarterly_Commencements",
+          "type": "quantitative",
+          "title": "Quarterly Commencements (New Enrolments)",
+          "scale": {"zero": false}
+        },
+        "y": {
+          "field": "Quarterly_Completions",
+          "type": "quantitative",
+          "title": "Quarterly Completions (Graduates)",
+          "scale": {"zero": false}
+        },
+        "order": {"field": "Period"},
+        "color": {
+          "field": "Policy_Era",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Pre-GFC Expansion (2000-2007)",
+              "Mining Boom & Traineeship Peak (2008-2012)",
+              "Post-Reform Contraction (2013-2019)",
+              "COVID-19 BAC Wage Subsidy Spike (2020-2022)",
+              "Australian Skills Guarantee & Subsidy Cliff (2023-2024)"
+            ],
+            "range": ["#3b82f6", "#10b981", "#64748b", "#f59e0b", "#ef4444"]
+          },
+          "legend": {"title": "Historical Policy Era", "orient": "bottom"}
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 65,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "x": {"field": "Quarterly_Commencements", "type": "quantitative"},
+        "y": {"field": "Quarterly_Completions", "type": "quantitative"},
+        "color": {"field": "Policy_Era", "type": "nominal"},
+        "tooltip": [
+          {"field": "Period", "type": "nominal", "title": "Quarter"},
+          {"field": "Quarterly_Commencements", "type": "quantitative", "format": ",", "title": "Commencements"},
+          {"field": "Quarterly_Completions", "type": "quantitative", "format": ",", "title": "Completions"},
+          {"field": "Total_In_Training", "type": "quantitative", "format": ",", "title": "Total In Training"},
+          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"},
+          {"field": "Key_Event", "type": "nominal", "title": "Policy Context"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "commence": 29500,
+            "comp": 9600,
+            "text": "2021: Massive COVID Subsidy Surge (BAC)"
+          },
+          {
+            "commence": 10200,
+            "comp": 6800,
+            "text": "2016: Post-Reform Slump"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f172a"
+      },
+      "encoding": {
+        "x": {"field": "commence", "type": "quantitative"},
+        "y": {"field": "comp", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "gridColor": "#f1f5f9"
+    }
+  }
+}

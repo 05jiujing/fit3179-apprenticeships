@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Apprentice Wage Progression vs National Minimum Wage",
+    "subtitle": "Weekly award wage distributions across 8 key trade sectors (Stage 1 to 4). Source: Fair Work Commission & NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 420,
+  "data": {
+    "url": "data/apprentice_wage_distributions.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "boxplot",
+        "extent": "min-max",
+        "size": 32,
+        "color": "#0284c7",
+        "median": {"color": "#ffffff", "size": 2}
+      },
+      "encoding": {
+        "x": {
+          "field": "Sector",
+          "type": "nominal",
+          "title": "Trade & Traineeship Sector",
+          "axis": {"labelAngle": -30}
+        },
+        "y": {
+          "field": "Weekly_Wage_AUD",
+          "type": "quantitative",
+          "title": "Weekly Award Wage (AUD)",
+          "scale": {"domain": [450, 1400]}
+        },
+        "tooltip": [
+          {"field": "Sector", "type": "nominal", "title": "Sector"},
+          {"field": "Weekly_Wage_AUD", "type": "quantitative", "format": "$,.0f", "title": "Weekly Wage (AUD)"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#dc2626",
+        "strokeWidth": 2,
+        "strokeDash": [6, 4]
+      },
+      "encoding": {
+        "y": {"datum": 915}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"sector": "Electrotechnology", "wage": 945, "text": "National Adult Minimum Wage ($915 / wk)"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#dc2626"
+      },
+      "encoding": {
+        "x": {"field": "sector", "type": "nominal"},
+        "y": {"field": "wage", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "gridColor": "#f1f5f9"
+    }
+  }
+}

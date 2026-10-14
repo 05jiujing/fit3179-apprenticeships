@@ -1,0 +1,105 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Gender Divide in Australian Trades: 2014 vs 2024",
+    "subtitle": "Cleveland dumbbell plot showing female representation across 9 vocational sectors. Source: NCVER",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 420,
+  "data": {
+    "url": "data/ncver_demographics_diversity.csv"
+  },
+  "transform": [
+    {"filter": "datum.Demographic_Type == 'Gender'"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#cbd5e1",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "Cohort_Group",
+          "type": "nominal",
+          "title": "Vocational Discipline",
+          "sort": {"field": "Share_2024_Pct", "order": "ascending"}
+        },
+        "x": {
+          "field": "Share_2014_Pct",
+          "type": "quantitative",
+          "title": "Female Representation (%)",
+          "scale": {"domain": [0, 95]}
+        },
+        "x2": {"field": "Share_2024_Pct"}
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 110,
+        "color": "#94a3b8",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {"field": "Cohort_Group", "type": "nominal", "sort": {"field": "Share_2024_Pct", "order": "ascending"}},
+        "x": {"field": "Share_2014_Pct", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Cohort_Group", "type": "nominal", "title": "Trade / Field"},
+          {"field": "Share_2014_Pct", "type": "quantitative", "format": ".1f", "title": "2014 Female Share (%)"},
+          {"field": "Subsector", "type": "nominal", "title": "Type"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 130,
+        "color": "#0d9488",
+        "opacity": 0.95
+      },
+      "encoding": {
+        "y": {"field": "Cohort_Group", "type": "nominal", "sort": {"field": "Share_2024_Pct", "order": "ascending"}},
+        "x": {"field": "Share_2024_Pct", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Cohort_Group", "type": "nominal", "title": "Trade / Field"},
+          {"field": "Share_2024_Pct", "type": "quantitative", "format": ".1f", "title": "2024 Female Share (%)"},
+          {"field": "Net_Change_Pct", "type": "quantitative", "format": "+.1f", "title": "10-Year Change (%)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"field": "Female in Construction Trades", "x": 6.5, "text": "Construction: Grew from 2.1% to just 3.8% in 10 years"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f766e"
+      },
+      "encoding": {
+        "y": {"field": "field", "type": "nominal"},
+        "x": {"field": "x", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "axis": {
+      "labelFont": "Plus Jakarta Sans, sans-serif",
+      "titleFont": "Plus Jakarta Sans, sans-serif",
+      "gridColor": "#f1f5f9"
+    }
+  }
+}

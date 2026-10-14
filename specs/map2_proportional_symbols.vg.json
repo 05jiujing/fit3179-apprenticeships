@@ -1,0 +1,125 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Metropolitan vs Regional Apprenticeship Training Hubs",
+    "subtitle": "Active apprentice population and trade specialisations across 36 major training centres (2024)",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 450,
+  "params": [
+    {
+      "name": "Region_Filter",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Capital City", "Regional City", "Rural/Remote"],
+        "labels": ["All Regions", "Capital Cities", "Regional Cities", "Rural & Remote Hubs"],
+        "name": "Filter Region: "
+      },
+      "value": "All"
+    }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": [134, -28],
+    "scale": 620
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f1f5f9",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 1.0
+      }
+    },
+    {
+      "data": {"url": "data/australia_regional_hubs.csv"},
+      "transform": [
+        {
+          "filter": "Region_Filter == 'All' || datum.Region_Type == Region_Filter"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.82,
+        "stroke": "#1e293b",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "size": {
+          "field": "Active_Apprentices",
+          "type": "quantitative",
+          "title": "Active Apprentices",
+          "scale": {
+            "type": "sqrt",
+            "domain": [1000, 65000],
+            "range": [40, 750]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "values": [5000, 20000, 60000]
+          }
+        },
+        "color": {
+          "field": "Trade_Share_Pct",
+          "type": "quantitative",
+          "title": "Trade Share (%)",
+          "scale": {
+            "type": "linear",
+            "domain": [55, 88],
+            "scheme": "oranges"
+          },
+          "legend": {
+            "orient": "bottom-left",
+            "direction": "horizontal",
+            "gradientLength": 140
+          }
+        },
+        "tooltip": [
+          {"field": "Hub_Name", "type": "nominal", "title": "Training Hub"},
+          {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
+          {"field": "Region_Type", "type": "nominal", "title": "Classification"},
+          {"field": "Active_Apprentices", "type": "quantitative", "format": ",", "title": "Active Apprentices"},
+          {"field": "Trade_Share_Pct", "type": "quantitative", "format": ".1f", "title": "Trade Share (%)"},
+          {"field": "Top_Trade_Field", "type": "nominal", "title": "Dominant Trade Field"},
+          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"},
+          {"field": "Female_Participation_Pct", "type": "quantitative", "format": ".1f", "title": "Female Share (%)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"lon": 116.8, "lat": -19.5, "text": "Pilbara: 88.1% Trade Concentration"},
+          {"lon": 150.8, "lat": -20.2, "text": "Mackay: 84.2% Mining Mechanical"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#9a3412"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "view": {"stroke": null}
+  }
+}

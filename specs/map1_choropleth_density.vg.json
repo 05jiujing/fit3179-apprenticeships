@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Apprenticeship Training Density Across Australian States & Territories",
+    "subtitle": "Active apprentices and trainees per 1,000 workforce members (2015–2024). Source: NCVER & ABS",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "anchor": "start",
+    "font": "Plus Jakarta Sans, sans-serif"
+  },
+  "width": "container",
+  "height": 450,
+  "params": [
+    {
+      "name": "Year_Select",
+      "value": 2024,
+      "bind": {
+        "input": "range",
+        "min": 2015,
+        "max": 2024,
+        "step": 1,
+        "name": "Filter Year: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": [134, -28],
+    "scale": 620
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {"url": "data/ncver_abs_state_summary.csv"},
+            "key": "State_Name",
+            "fields": [
+              "Year",
+              "State_Code",
+              "State_Name",
+              "Workforce_Thousands",
+              "In_Training_Total",
+              "Trades_Count",
+              "Non_Trades_Count",
+              "Commencements",
+              "Completions",
+              "Apprentices_Per_1000_Workers",
+              "Completion_Rate_Pct"
+            ]
+          }
+        },
+        {"filter": "datum.Year == Year_Select"}
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "Apprentices_Per_1000_Workers",
+          "type": "quantitative",
+          "title": "Per 1,000 Workers",
+          "scale": {
+            "type": "linear",
+            "domain": [18, 38],
+            "scheme": "blues"
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "direction": "horizontal",
+            "gradientLength": 160
+          }
+        },
+        "tooltip": [
+          {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
+          {"field": "Year", "type": "quantitative", "title": "Year"},
+          {"field": "Apprentices_Per_1000_Workers", "type": "quantitative", "format": ".1f", "title": "Per 1,000 Workers"},
+          {"field": "In_Training_Total", "type": "quantitative", "format": ",", "title": "Total In Training"},
+          {"field": "Trades_Count", "type": "quantitative", "format": ",", "title": "Trade Apprentices"},
+          {"field": "Non_Trades_Count", "type": "quantitative", "format": ",", "title": "Trainees (Non-Trade)"},
+          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "QLD", "lon": 143.5, "lat": -22.5, "text": "Queensland: Consistently highest per-capita intake"},
+          {"state": "WA", "lon": 121.5, "lat": -26.0, "text": "WA: Dominated by heavy mining & industrial trades"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f172a",
+        "opacity": 0.85
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "background": "#ffffff",
+    "view": {"stroke": null}
+  }
+}
