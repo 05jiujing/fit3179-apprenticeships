@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "The Gender Divide in Australian Trades: 2014 vs 2024",
-    "subtitle": "Cleveland dumbbell plot showing female representation across 9 vocational sectors. Source: NCVER",
+    "text": "The Gender Divide in Australian Vocational Trades: 2014 vs 2024",
+    "subtitle": "Cleveland dumbbell plot tracking female representation shifts across 9 sectors. Source: NCVER",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "anchor": "start",
@@ -13,9 +13,6 @@
   "data": {
     "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_demographics_diversity.csv"
   },
-  "transform": [
-    {"filter": "datum.Demographic_Type == 'Gender'"}
-  ],
   "layer": [
     {
       "mark": {
@@ -25,18 +22,18 @@
       },
       "encoding": {
         "y": {
-          "field": "Cohort_Group",
+          "field": "Trade_Field",
           "type": "nominal",
-          "title": "Vocational Discipline",
-          "sort": {"field": "Share_2024_Pct", "order": "ascending"}
+          "title": "Vocational Field",
+          "sort": {"field": "Female_Share_2024_Pct", "order": "ascending"}
         },
         "x": {
-          "field": "Share_2014_Pct",
+          "field": "Female_Share_2014_Pct",
           "type": "quantitative",
           "title": "Female Representation (%)",
           "scale": {"domain": [0, 95]}
         },
-        "x2": {"field": "Share_2024_Pct"}
+        "x2": {"field": "Female_Share_2024_Pct"}
       }
     },
     {
@@ -47,12 +44,12 @@
         "opacity": 0.95
       },
       "encoding": {
-        "y": {"field": "Cohort_Group", "type": "nominal", "sort": {"field": "Share_2024_Pct", "order": "ascending"}},
-        "x": {"field": "Share_2014_Pct", "type": "quantitative"},
+        "y": {"field": "Trade_Field", "type": "nominal", "sort": {"field": "Female_Share_2024_Pct", "order": "ascending"}},
+        "x": {"field": "Female_Share_2014_Pct", "type": "quantitative"},
         "tooltip": [
-          {"field": "Cohort_Group", "type": "nominal", "title": "Trade / Field"},
-          {"field": "Share_2014_Pct", "type": "quantitative", "format": ".1f", "title": "2014 Female Share (%)"},
-          {"field": "Subsector", "type": "nominal", "title": "Type"}
+          {"field": "Trade_Field", "type": "nominal", "title": "Field"},
+          {"field": "Female_Share_2014_Pct", "type": "quantitative", "format": ".1f", "title": "2014 Female Share (%)"},
+          {"field": "Classification", "type": "nominal", "title": "Type"}
         ]
       }
     },
@@ -64,19 +61,19 @@
         "opacity": 0.95
       },
       "encoding": {
-        "y": {"field": "Cohort_Group", "type": "nominal", "sort": {"field": "Share_2024_Pct", "order": "ascending"}},
-        "x": {"field": "Share_2024_Pct", "type": "quantitative"},
+        "y": {"field": "Trade_Field", "type": "nominal", "sort": {"field": "Female_Share_2024_Pct", "order": "ascending"}},
+        "x": {"field": "Female_Share_2024_Pct", "type": "quantitative"},
         "tooltip": [
-          {"field": "Cohort_Group", "type": "nominal", "title": "Trade / Field"},
-          {"field": "Share_2024_Pct", "type": "quantitative", "format": ".1f", "title": "2024 Female Share (%)"},
-          {"field": "Net_Change_Pct", "type": "quantitative", "format": "+.1f", "title": "10-Year Change (%)"}
+          {"field": "Trade_Field", "type": "nominal", "title": "Field"},
+          {"field": "Female_Share_2024_Pct", "type": "quantitative", "format": ".1f", "title": "2024 Female Share (%)"},
+          {"field": "Net_10Yr_Change_Pct", "type": "quantitative", "format": "+.1f", "title": "10-Year Change (%)"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"field": "Female in Construction Trades", "x": 6.5, "text": "Construction: Grew from 2.1% to just 3.8% in 10 years"}
+          {"field": "Construction Trades", "x": 6.0, "text": "Construction: Only 3.8% female despite 10 years of campaigns"}
         ]
       },
       "mark": {

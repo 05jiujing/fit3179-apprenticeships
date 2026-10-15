@@ -17,12 +17,16 @@
     {
       "name": "industries",
       "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_industry_trades.csv",
-      "format": {"type": "csv", "parse": {"Active_Apprentices": "number", "Trades_Share_Pct": "number", "Female_Share_Pct": "number"}},
+      "format": {
+        "type": "csv",
+        "parse": {
+          "Active_Apprentices": "number",
+          "Trade_Share_Pct": "number",
+          "Female_Share_Pct": "number",
+          "Median_Weekly_Training_Wage": "number"
+        }
+      },
       "transform": [
-        {
-          "type": "nest",
-          "keys": ["Sector_Category"]
-        },
         {
           "type": "treemap",
           "field": "Active_Apprentices",
@@ -58,11 +62,11 @@
           "x2": {"field": "x1"},
           "y2": {"field": "y1"},
           "fill": [
-            {"test": "!datum.children", "scale": "color", "field": "Trades_Share_Pct"},
+            {"test": "!datum.children", "scale": "color", "field": "Trade_Share_Pct"},
             {"value": "#f8fafc"}
           ],
           "tooltip": {
-            "signal": "datum.children ? null : {'Industry': datum.Industry_Name, 'Sector': datum.Sector_Category, 'Active Apprentices': format(datum.Active_Apprentices, ','), 'Trade Share (%)': format(datum.Trades_Share_Pct, '.1f') + '%', 'Female Share (%)': format(datum.Female_Share_Pct, '.1f') + '%', 'Median Apprentice Wage': '$' + datum.Median_Weekly_Training_Wage_AUD + ' /wk'}"
+            "signal": "{'Industry': datum.Industry_Name, 'Active Apprentices': format(datum.Active_Apprentices, ','), 'Trade Share (%)': format(datum.Trade_Share_Pct, '.1f') + '%', 'Female Share (%)': format(datum.Female_Share_Pct, '.1f') + '%', 'Median Training Wage': '$' + datum.Median_Weekly_Training_Wage + ' /wk'}"
           }
         },
         "hover": {
@@ -80,7 +84,7 @@
           "fontSize": {"value": 11},
           "fontWeight": {"value": 600},
           "fill": [
-            {"test": "datum.Trades_Share_Pct > 50", "value": "#ffffff"},
+            {"test": "datum.Trade_Share_Pct > 50", "value": "#ffffff"},
             {"value": "#0f172a"}
           ],
           "baseline": {"value": "middle"},

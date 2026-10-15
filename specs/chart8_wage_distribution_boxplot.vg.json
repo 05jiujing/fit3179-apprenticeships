@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Apprentice Wage Progression vs National Minimum Wage",
-    "subtitle": "Weekly award wage distributions across 8 key trade sectors (Stage 1 to 4). Source: Fair Work Commission & NCVER",
+    "text": "Apprentice Award Wages vs National Adult Minimum Wage",
+    "subtitle": "Weekly statutory modern award wage progression (Stage 1 to Stage 4). Source: Fair Work Commission (2024)",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "anchor": "start",
@@ -26,18 +26,20 @@
         "x": {
           "field": "Sector",
           "type": "nominal",
-          "title": "Trade & Traineeship Sector",
+          "title": "Trade & Traineeship Award Sector",
           "axis": {"labelAngle": -30}
         },
         "y": {
-          "field": "Weekly_Wage_AUD",
+          "field": "Weekly_Award_Wage_AUD",
           "type": "quantitative",
           "title": "Weekly Award Wage (AUD)",
-          "scale": {"domain": [450, 1400]}
+          "scale": {"domain": [400, 1100]}
         },
         "tooltip": [
-          {"field": "Sector", "type": "nominal", "title": "Sector"},
-          {"field": "Weekly_Wage_AUD", "type": "quantitative", "format": "$,.0f", "title": "Weekly Wage (AUD)"}
+          {"field": "Sector", "type": "nominal", "title": "Award Sector"},
+          {"field": "Apprenticeship_Stage", "type": "nominal", "title": "Stage"},
+          {"field": "Weekly_Award_Wage_AUD", "type": "quantitative", "format": "$,.2f", "title": "Weekly Wage (AUD)"},
+          {"field": "Wage_Deficit_To_Minimum", "type": "quantitative", "format": "+$,.2f", "title": "Difference to Adult Minimum"}
         ]
       }
     },
@@ -49,13 +51,13 @@
         "strokeDash": [6, 4]
       },
       "encoding": {
-        "y": {"datum": 915}
+        "y": {"datum": 915.9}
       }
     },
     {
       "data": {
         "values": [
-          {"sector": "Electrotechnology", "wage": 945, "text": "National Adult Minimum Wage ($915 / wk)"}
+          {"sector": "Electrotechnology", "wage": 940, "text": "National Adult Minimum Wage: $915.90 / wk"}
         ]
       },
       "mark": {

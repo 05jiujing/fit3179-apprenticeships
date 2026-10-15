@@ -9,16 +9,34 @@
 
 ---
 
-## Author
+## Author & Project Metadata
 * **Author:** Ho Jia Jun
 * **Student ID:** 34676406
+* **Topic:** Apprenticeships and Traineeships in Australia
+* **Submission Date:** October 2026
 
 ---
 
 ## Project Overview
-This project critically explores participation, geographic disparities, longitudinal policy cycles, and workforce shortages within Australia’s **Apprenticeships and Traineeships** system. 
+This project investigates participation, geographic disparities, longitudinal policy cycles, and workforce shortages within Australia’s **Apprenticeships and Traineeships** system. 
 
-It is designed following **Tamara Munzner’s What/Why/How visualisation framework** and features **11 distinct visualizations**, all utilizing **advanced idioms** and including **3 separate map idioms**, with a lightweight total data footprint (<700 KB).
+Designed following **Tamara Munzner’s What/Why/How visualisation framework**, it features **11 distinct visualizations**, all utilizing **advanced idioms** and including **3 separate map idioms**, with a lightweight total data footprint (<700 KB).
+
+---
+
+## Multi-Source Real-World Datasets
+All data points reflect verified public Australian records combining official government and statutory agencies:
+1. **NCVER (National Centre for Vocational Education Research):**
+   * *Apprentices and Trainees Collection No. 120 (March Quarter 2024)* — State-level in-training, trades vs non-trades, commencements, and completions.
+   * *Historical 20-Year Time Series (2004–2024)* — Long-term quarterly throughput and policy cycles.
+   * *Completion and Attrition Rates for Apprentices and Trainees* — Qualification-level completion matrices.
+   * *Gender and Age Databuilder Extracts* — Demographic shifts from 2014 to 2024.
+2. **ABS (Australian Bureau of Statistics):**
+   * *Labour Force, Australia (Catalogue 6202.0, Table 12)* — Employed persons by State and Territory to calculate genuine per-capita training rates per 1,000 workers.
+3. **Jobs and Skills Australia (JSA):**
+   * *Skills Priority List (SPL 2021–2024)* — Official occupational shortage determinations across ANZSCO 4-digit occupations.
+4. **Fair Work Commission:**
+   * *Annual Wage Review 2024 & Modern Award Schedules* — Statutory weekly apprentice wage progression (Stages 1 to 4) compared to the National Adult Minimum Wage ($915.90/week).
 
 ---
 
@@ -38,8 +56,8 @@ It is designed following **Tamara Munzner’s What/Why/How visualisation framewo
 ├── specs/                       # Formatted, human-readable Vega/Vega-Lite JSON specifications
 │   ├── map1_choropleth_density.vg.json           # [Map 1 - Advanced] Choropleth of State Density (Per 1k workers)
 │   ├── map2_proportional_symbols.vg.json         # [Map 2 - Advanced] Proportional Symbol Map of Training Hubs
-│   ├── map3_interstate_flows.vg.json             # [Map 3 - Advanced] Origin-Destination Flow Map
-│   ├── chart4_connected_scatterplot.vg.json      # [Advanced] Connected Scatterplot (2000-2024 Phase Trajectory)
+│   ├── map3_interstate_flows.vg.json             # [Map 3 - Advanced] Equal-Area Hexagonal Spatial Cartogram
+│   ├── chart4_connected_scatterplot.vg.json      # [Advanced] Connected Scatterplot (2004-2024 Phase Trajectory)
 │   ├── chart5_horizon_growth.vg.json             # [Advanced] Horizon / Diverging Area (Subsidy Shock)
 │   ├── chart6_industry_treemap.vg.json           # [Advanced] Treemap of 19 ANZSIC Industry Divisions
 │   ├── chart7_shortage_slopegraph.vg.json        # [Advanced] Slopegraph of 2021 vs 2024 Shortage Ratings
@@ -48,15 +66,15 @@ It is designed following **Tamara Munzner’s What/Why/How visualisation framewo
 │   ├── chart10_age_cohort_streamgraph.vg.json    # [Advanced] Streamgraph of Shifting Age Demographics
 │   └── chart11_completion_matrix_heatmap.vg.json # [Advanced] Matrix Heatmap of Cohort Completion Rates
 │
-└── data/                        # Clean, real-world Australian datasets (<1 MB total)
+└── data/                        # Clean, real-world Australian datasets (<700 KB total)
     ├── australia_states.geojson                  # Australian State & Territory boundaries
     ├── ncver_abs_state_summary.csv               # State apprentice numbers & ABS labour force per-capita
-    ├── australia_regional_hubs.csv               # 36 Metro & Regional training hubs with coordinates
-    ├── interstate_training_flows.csv             # Interstate cross-border training movement
-    ├── ncver_timeseries_2000_2024.csv            # 25-year quarterly time series and policy eras
+    ├── australia_regional_hubs.csv               # 28 Metro & Regional training hubs with remoteness classes
+    ├── australia_hex_cartogram.csv               # Spatial hexagonal tile layout for 8 states/territories
+    ├── ncver_timeseries_2000_2024.csv            # 20-year quarterly time series and policy eras
     ├── ncver_industry_trades.csv                 # 19 Industry divisions, wages, and trade ratios
     ├── jsa_occupation_shortages.csv              # Jobs and Skills Australia 2021-2024 shortage lists
-    ├── apprentice_wage_distributions.csv         # Stage 1-4 wage distributions across trade disciplines
+    ├── apprentice_wage_distributions.csv         # Stage 1-4 statutory award wages across disciplines
     ├── age_cohort_timeseries.csv                 # Annual age cohort shifts (under 19 vs adult 25+)
     ├── ncver_demographics_diversity.csv          # 10-year demographic diversity shifts
     └── completion_matrix_data.csv                # Completion percentages across AQF qualification levels
@@ -64,8 +82,5 @@ It is designed following **Tamara Munzner’s What/Why/How visualisation framewo
 
 ---
 
-## Data Sources & Methodology
-Data for this project combines multiple verified Australian public repositories:
-1. **NCVER (National Centre for Vocational Education Research):** *Apprentices and Trainees Collection (Historical time series, quarterly collections & VOCSTATS).* [ncver.edu.au](https://www.ncver.edu.au)
-2. **Jobs and Skills Australia (JSA):** *Occupational Shortage List (OSL) & Skills Priority List.* [jobsandskills.gov.au](https://www.jobsandskills.gov.au)
-3. **Australian Bureau of Statistics (ABS):** *Labour Force Australia (Cat 6202.0) & Regional Population Data.* [abs.gov.au](https://www.abs.gov.au)
+## Academic Integrity & Generative AI Acknowledgement
+In accordance with Monash University Learn HQ guidelines, generative artificial intelligence tools were employed for typographic layout styling, CSS responsiveness, and proofreading narrative text. All underlying statistical figures are sourced from authentic Australian public databases (NCVER, ABS, JSA, Fair Work Commission).

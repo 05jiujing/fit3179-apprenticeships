@@ -28,13 +28,13 @@
           "axis": {"labelAngle": 0}
         },
         "y": {
-          "field": "Share_Pct",
+          "field": "Percentage",
           "type": "quantitative",
           "stack": "center",
           "axis": null
         },
         "color": {
-          "field": "Age_Cohort",
+          "field": "Age_Group",
           "type": "nominal",
           "scale": {
             "domain": [
@@ -49,16 +49,16 @@
         },
         "tooltip": [
           {"field": "Year", "type": "ordinal", "title": "Year"},
-          {"field": "Age_Cohort", "type": "nominal", "title": "Cohort"},
-          {"field": "Share_Pct", "type": "quantitative", "format": ".1f", "title": "Share of Intake (%)"}
+          {"field": "Age_Group", "type": "nominal", "title": "Cohort"},
+          {"field": "Percentage", "type": "quantitative", "format": ".1f", "title": "Share of Intake (%)"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"year": 2014, "text": "2014: School leavers formed 38.5% of apprentices"},
-          {"year": 2024, "text": "2024: Adult apprentices (25+) now represent 36.0%"}
+          {"year": 2014, "text": "2014: School leavers represented 38.4% of apprentices"},
+          {"year": 2024, "text": "2024: Adult apprentices (25+) now form 36.2%"}
         ]
       },
       "mark": {

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Interstate Training Mobility & Cross-Border Delivery",
-    "subtitle": "Major apprentice and trainee cross-border training contract movements (2024)",
+    "text": "Equal-Area Spatial Cartogram: State Completion Rates",
+    "subtitle": "Hexagonal geographic tile cartogram eliminating landmass distortion (2024). Source: NCVER",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "anchor": "start",
@@ -10,117 +10,104 @@
   },
   "width": "container",
   "height": 450,
-  "params": [
-    {
-      "name": "Min_Trainees",
-      "value": 1000,
-      "bind": {
-        "input": "range",
-        "min": 800,
-        "max": 5000,
-        "step": 200,
-        "name": "Min Flow Volume: "
-      }
-    }
-  ],
-  "projection": {
-    "type": "equirectangular",
-    "center": [134, -28],
-    "scale": 620
+  "data": {
+    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_hex_cartogram.csv"
   },
   "layer": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_states.geojson",
-        "format": {"type": "json", "property": "features"}
-      },
       "mark": {
-        "type": "geoshape",
-        "fill": "#f8fafc",
-        "stroke": "#cbd5e1",
-        "strokeWidth": 1.0
-      }
-    },
-    {
-      "data": {"url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/interstate_training_flows.csv"},
-      "transform": [
-        {"filter": "datum.Trainee_Count >= Min_Trainees"}
-      ],
-      "mark": {
-        "type": "rule",
-        "opacity": 0.65,
-        "strokeCap": "round"
+        "type": "point",
+        "shape": "hexagon",
+        "size": 6500,
+        "filled": true,
+        "stroke": "#ffffff",
+        "strokeWidth": 2
       },
       "encoding": {
-        "longitude": {"field": "Origin_Lon", "type": "quantitative"},
-        "latitude": {"field": "Origin_Lat", "type": "quantitative"},
-        "longitude2": {"field": "Dest_Lon"},
-        "latitude2": {"field": "Dest_Lat"},
-        "strokeWidth": {
-          "field": "Trainee_Count",
+        "x": {
+          "field": "Grid_Col",
           "type": "quantitative",
-          "scale": {"domain": [800, 5500], "range": [1.5, 6.0]},
-          "legend": {"title": "Annual Flow Volume"}
+          "scale": {"domain": [0.3, 4.7]},
+          "axis": null
+        },
+        "y": {
+          "field": "Grid_Row",
+          "type": "quantitative",
+          "scale": {"domain": [0.4, 5.6], "reverse": true},
+          "axis": null
         },
         "color": {
-          "field": "Dominant_Trade_Field",
-          "type": "nominal",
-          "scale": {"scheme": "category10"},
-          "legend": {"title": "Primary Training Sector", "orient": "bottom-left"}
+          "field": "Completion_Rate_Pct",
+          "type": "quantitative",
+          "title": "Completion Rate (%)",
+          "scale": {
+            "type": "linear",
+            "domain": [53, 62],
+            "scheme": "purples"
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "direction": "horizontal",
+            "gradientLength": 160
+          }
         },
         "tooltip": [
-          {"field": "Origin_State", "type": "nominal", "title": "Origin"},
-          {"field": "Dest_State", "type": "nominal", "title": "Destination"},
-          {"field": "Trainee_Count", "type": "quantitative", "format": ",", "title": "Trainees Moving / Enrolled"},
-          {"field": "Dominant_Trade_Field", "type": "nominal", "title": "Sector Focus"}
+          {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
+          {"field": "Active_Apprentices", "type": "quantitative", "format": ",", "title": "Active Apprentices"},
+          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Cohort Completion Rate (%)"},
+          {"field": "Trade_Share_Pct", "type": "quantitative", "format": ".1f", "title": "Trade Share (%)"},
+          {"field": "Dominant_Sector", "type": "nominal", "title": "Dominant Industry Focus"}
         ]
       }
     },
     {
-      "data": {
-        "values": [
-          {"state": "NSW", "lat": -33.8688, "lon": 151.2093},
-          {"state": "VIC", "lat": -37.8136, "lon": 144.9631},
-          {"state": "QLD", "lat": -27.4698, "lon": 153.0251},
-          {"state": "WA",  "lat": -31.9505, "lon": 115.8605},
-          {"state": "SA",  "lat": -34.9285, "lon": 138.6007},
-          {"state": "TAS", "lat": -42.8821, "lon": 147.3272},
-          {"state": "ACT", "lat": -35.2809, "lon": 149.1300},
-          {"state": "NT",  "lat": -12.4634, "lon": 130.8456}
-        ]
-      },
       "mark": {
-        "type": "circle",
-        "size": 90,
-        "color": "#0f172a",
-        "opacity": 0.9
+        "type": "text",
+        "fontSize": 14,
+        "fontWeight": 800,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#ffffff",
+        "dy": -8
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"}
+        "x": {"field": "Grid_Col", "type": "quantitative"},
+        "y": {"field": "Grid_Row", "type": "quantitative"},
+        "text": {"field": "State_Code", "type": "nominal"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#f1f5f9",
+        "dy": 10
+      },
+      "encoding": {
+        "x": {"field": "Grid_Col", "type": "quantitative"},
+        "y": {"field": "Grid_Row", "type": "quantitative"},
+        "text": {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f"}
       }
     },
     {
       "data": {
         "values": [
-          {"state": "NSW", "lat": -34.3, "lon": 151.8, "name": "Sydney"},
-          {"state": "VIC", "lat": -38.3, "lon": 145.2, "name": "Melbourne"},
-          {"state": "QLD", "lat": -27.1, "lon": 153.6, "name": "Brisbane"},
-          {"state": "WA",  "lat": -32.5, "lon": 116.2, "name": "Perth"},
-          {"state": "SA",  "lat": -35.3, "lon": 138.9, "name": "Adelaide"}
+          {"col": 4.1, "row": 2.2, "text": "ACT: Highest completion (61.2%)"},
+          {"col": 1.2, "row": 1.2, "text": "Equal-area geometry balances small jurisdictions"}
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": 700,
+        "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#0f172a"
+        "fill": "#64748b"
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "name", "type": "nominal"}
+        "x": {"field": "col", "type": "quantitative"},
+        "y": {"field": "row", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
       }
     }
   ],

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Metropolitan vs Regional Apprenticeship Training Hubs",
-    "subtitle": "Active apprentice population and trade specialisations across 36 major training centres (2024)",
+    "text": "Metropolitan vs Regional Apprenticeship Training Centers",
+    "subtitle": "Active apprentice volumes and trade focus across 28 official NCVER training hubs (2024). Source: NCVER",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "anchor": "start",
@@ -12,12 +12,12 @@
   "height": 450,
   "params": [
     {
-      "name": "Region_Filter",
+      "name": "Remoteness_Filter",
       "bind": {
         "input": "select",
-        "options": ["All", "Capital City", "Regional City", "Rural/Remote"],
-        "labels": ["All Regions", "Capital Cities", "Regional Cities", "Rural & Remote Hubs"],
-        "name": "Filter Region: "
+        "options": ["All", "Major City", "Inner Regional", "Outer Regional", "Remote & Very Remote"],
+        "labels": ["All Remoteness Areas", "Major Cities", "Inner Regional", "Outer Regional", "Remote & Very Remote"],
+        "name": "Remoteness Area: "
       },
       "value": "All"
     }
@@ -41,10 +41,12 @@
       }
     },
     {
-      "data": {"url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_regional_hubs.csv"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_regional_hubs.csv"
+      },
       "transform": [
         {
-          "filter": "Region_Filter == 'All' || datum.Region_Type == Region_Filter"
+          "filter": "Remoteness_Filter == 'All' || datum.Remoteness_Class == Remoteness_Filter"
         }
       ],
       "mark": {
@@ -62,12 +64,12 @@
           "title": "Active Apprentices",
           "scale": {
             "type": "sqrt",
-            "domain": [1000, 65000],
-            "range": [40, 750]
+            "domain": [800, 65000],
+            "range": [35, 750]
           },
           "legend": {
             "orient": "bottom-right",
-            "values": [5000, 20000, 60000]
+            "values": [5000, 25000, 60000]
           }
         },
         "color": {
@@ -76,7 +78,7 @@
           "title": "Trade Share (%)",
           "scale": {
             "type": "linear",
-            "domain": [55, 88],
+            "domain": [60, 90],
             "scheme": "oranges"
           },
           "legend": {
@@ -87,21 +89,19 @@
         },
         "tooltip": [
           {"field": "Hub_Name", "type": "nominal", "title": "Training Hub"},
-          {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
-          {"field": "Region_Type", "type": "nominal", "title": "Classification"},
+          {"field": "State", "type": "nominal", "title": "State"},
+          {"field": "Remoteness_Class", "type": "nominal", "title": "Remoteness Class"},
           {"field": "Active_Apprentices", "type": "quantitative", "format": ",", "title": "Active Apprentices"},
           {"field": "Trade_Share_Pct", "type": "quantitative", "format": ".1f", "title": "Trade Share (%)"},
-          {"field": "Top_Trade_Field", "type": "nominal", "title": "Dominant Trade Field"},
-          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"},
-          {"field": "Female_Participation_Pct", "type": "quantitative", "format": ".1f", "title": "Female Share (%)"}
+          {"field": "Top_Trade_Field", "type": "nominal", "title": "Dominant Training Discipline"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"lon": 116.8, "lat": -19.5, "text": "Pilbara: 88.1% Trade Concentration"},
-          {"lon": 150.8, "lat": -20.2, "text": "Mackay: 84.2% Mining Mechanical"}
+          {"lon": 116.8, "lat": -19.5, "text": "Pilbara: 88.4% Heavy Mining Trades"},
+          {"lon": 149.2, "lat": -20.2, "text": "Mackay: 84.2% Industrial Mechanical"}
         ]
       },
       "mark": {

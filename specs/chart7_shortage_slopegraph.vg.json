@@ -14,13 +14,13 @@
     "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/jsa_occupation_shortages.csv"
   },
   "transform": [
-    {"filter": "datum.Priority_Tier != 'Tier 4 No Shortage'"},
+    {"filter": "datum.Shortage_Trend != 'No Shortage'"},
     {
-      "fold": ["JSA_Shortage_2021", "JSA_Shortage_2024"],
+      "fold": ["Shortage_2021", "Shortage_2024"],
       "as": ["Assessment_Year", "Shortage_Rating"]
     },
     {
-      "calculate": "datum.Assessment_Year == 'JSA_Shortage_2021' ? '2021 (Baseline)' : '2024 (Current)'",
+      "calculate": "datum.Assessment_Year == 'Shortage_2021' ? '2021 (Baseline)' : '2024 (Current)'",
       "as": "Year_Label"
     },
     {
@@ -70,17 +70,17 @@
         "tooltip": [
           {"field": "Occupation_Title", "type": "nominal", "title": "Occupation"},
           {"field": "Trade_Category", "type": "nominal", "title": "Category"},
-          {"field": "JSA_Shortage_2021", "type": "nominal", "title": "2021 Status"},
-          {"field": "JSA_Shortage_2024", "type": "nominal", "title": "2024 Status"},
+          {"field": "Shortage_2021", "type": "nominal", "title": "2021 Status"},
+          {"field": "Shortage_2024", "type": "nominal", "title": "2024 Status"},
           {"field": "In_Training_Count", "type": "quantitative", "format": ",", "title": "Active in Training"},
-          {"field": "Projected_5Yr_Growth_Pct", "type": "quantitative", "format": "+.1f", "title": "5-Yr Projected Demand (%)"}
+          {"field": "Projected_5Yr_Demand", "type": "nominal", "title": "5-Yr Projected Demand"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"year": "2024 (Current)", "level": 3, "text": "16 Trade Fields in Chronic National Shortage"}
+          {"year": "2024 (Current)", "level": 3, "text": "16 Trade Occupations Locked in National Shortage"}
         ]
       },
       "mark": {

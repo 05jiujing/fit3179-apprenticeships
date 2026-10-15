@@ -22,24 +22,24 @@
       },
       "encoding": {
         "x": {
-          "field": "Sector",
+          "field": "Vocational_Sector",
           "type": "nominal",
           "title": "Vocational Discipline",
           "axis": {"labelAngle": -30}
         },
         "y": {
-          "field": "Qualification_Level",
+          "field": "AQF_Level",
           "type": "nominal",
           "title": "AQF Level",
           "sort": ["Certificate II", "Certificate III (Trade)", "Certificate IV", "Diploma & Above"]
         },
         "color": {
-          "field": "Completion_Rate_Pct",
+          "field": "Cohort_Completion_Rate_Pct",
           "type": "quantitative",
           "title": "Completion Rate (%)",
           "scale": {
             "type": "linear",
-            "domain": [40, 75],
+            "domain": [40, 76],
             "scheme": "redyellowgreen"
           },
           "legend": {
@@ -49,9 +49,9 @@
           }
         },
         "tooltip": [
-          {"field": "Sector", "type": "nominal", "title": "Sector"},
-          {"field": "Qualification_Level", "type": "nominal", "title": "Qualification Level"},
-          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"}
+          {"field": "Vocational_Sector", "type": "nominal", "title": "Sector"},
+          {"field": "AQF_Level", "type": "nominal", "title": "Qualification Level"},
+          {"field": "Cohort_Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"}
         ]
       }
     },
@@ -63,16 +63,16 @@
         "font": "Plus Jakarta Sans, sans-serif"
       },
       "encoding": {
-        "x": {"field": "Sector", "type": "nominal"},
+        "x": {"field": "Vocational_Sector", "type": "nominal"},
         "y": {
-          "field": "Qualification_Level",
+          "field": "AQF_Level",
           "type": "nominal",
           "sort": ["Certificate II", "Certificate III (Trade)", "Certificate IV", "Diploma & Above"]
         },
-        "text": {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f"},
+        "text": {"field": "Cohort_Completion_Rate_Pct", "type": "quantitative", "format": ".1f"},
         "color": {
           "condition": {
-            "test": "datum.Completion_Rate_Pct < 50 || datum.Completion_Rate_Pct > 68",
+            "test": "datum.Cohort_Completion_Rate_Pct < 48 || datum.Cohort_Completion_Rate_Pct > 68",
             "value": "#0f172a"
           },
           "value": "#1e293b"

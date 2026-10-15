@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Quarterly Inflow vs Attrition: The Policy Subsidy Cycle",
-    "subtitle": "Banded divergence showing quarterly commencements vs cancellations/withdrawals (2005–2024). Source: NCVER",
+    "text": "Quarterly Pipeline Momentum: Net Intake vs Attrition (2004–2024)",
+    "subtitle": "Diverging area showing net pipeline change (Commencements minus Attrition/Completions). Source: NCVER",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "anchor": "start",
@@ -13,15 +13,11 @@
   "data": {
     "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_timeseries_2000_2024.csv"
   },
-  "transform": [
-    {"filter": "datum.Year >= 2005"},
-    {"calculate": "datum.Quarterly_Commencements - datum.Cancellations_Withdrawals", "as": "Net_Pipeline_Growth"}
-  ],
   "layer": [
     {
       "mark": {
         "type": "area",
-        "opacity": 0.45,
+        "opacity": 0.5,
         "line": {"color": "#0284c7", "width": 1.5}
       },
       "encoding": {
@@ -31,17 +27,17 @@
           "title": "Year & Quarter",
           "axis": {
             "labelAngle": -45,
-            "values": ["2005-Q1", "2008-Q1", "2011-Q1", "2014-Q1", "2017-Q1", "2020-Q1", "2023-Q1", "2024-Q4"]
+            "values": ["2004-Q1", "2007-Q1", "2010-Q1", "2013-Q1", "2016-Q1", "2019-Q1", "2022-Q1", "2024-Q4"]
           }
         },
         "y": {
-          "field": "Net_Pipeline_Growth",
+          "field": "Net_Quarterly_Change",
           "type": "quantitative",
-          "title": "Net Quarterly Additions (Commencements - Cancellations)"
+          "title": "Net Quarterly Additions / Deficit"
         },
         "color": {
           "condition": {
-            "test": "datum.Net_Pipeline_Growth >= 0",
+            "test": "datum.Net_Quarterly_Change >= 0",
             "value": "#0284c7"
           },
           "value": "#ef4444"
@@ -57,8 +53,8 @@
     {
       "data": {
         "values": [
-          {"period": "2021-Q2", "val": 16500, "text": "BAC 50% Wage Subsidy: Net peak (+16.5k/qtr)"},
-          {"period": "2015-Q3", "val": 3500, "text": "Post-Reform Contraction"}
+          {"period": "2021-Q1", "val": 12500, "text": "2021: BAC Wage Subsidy Inflow Peak"},
+          {"period": "2014-Q3", "val": -4500, "text": "2014: Post-Reform Deficit"}
         ]
       },
       "mark": {
