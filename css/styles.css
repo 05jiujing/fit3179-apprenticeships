@@ -158,10 +158,11 @@ header.hero-banner p.lead-subtitle {
 
 .vis-card .card-caption {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-top: 16px;
   border-top: 1px solid #f1f5f9;
   padding-top: 12px;
+  line-height: 1.5;
 }
 
 .vis-container {
@@ -170,12 +171,132 @@ header.hero-banner p.lead-subtitle {
   position: relative;
 }
 
-/* Vega Custom Overrides */
-.vega-embed summary {
-  opacity: 0.6;
+/* Vega Embed Action Controls */
+.vega-embed {
+  position: relative;
+  width: 100%;
 }
+
+.vega-embed summary {
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
 .vega-embed summary:hover {
   opacity: 1;
+}
+
+.vega-actions {
+  background: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+  padding: 8px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.vega-actions a {
+  color: var(--accent-primary) !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+  display: block !important;
+  text-decoration: none !important;
+}
+
+.vega-actions a:hover {
+  background-color: #f1f5f9 !important;
+  border-radius: 4px !important;
+}
+
+/* In-Dashboard Vega-Lite Code Inspector Drawer */
+.code-inspector {
+  margin-top: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #f8fafc;
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+
+.code-inspector summary {
+  padding: 10px 14px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  background-color: #f1f5f9;
+  transition: background-color 0.15s ease;
+}
+
+.code-inspector summary:hover {
+  background-color: #e2e8f0;
+}
+
+.code-inspector .badge-pill {
+  font-size: 0.7rem;
+  background: #0284c7;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.code-inspector .code-body {
+  position: relative;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 14px;
+}
+
+.code-inspector .code-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.code-inspector .code-actions a.btn-editor,
+.code-inspector .code-actions button.btn-copy {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid #334155;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.15s ease;
+}
+
+.code-inspector .code-actions a.btn-editor:hover {
+  background: #0284c7;
+  border-color: #0284c7;
+}
+
+.code-inspector .code-actions button.btn-copy:hover {
+  background: #334155;
+  border-color: #64748b;
+}
+
+.code-inspector pre {
+  max-height: 280px;
+  overflow-y: auto;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  padding: 8px;
+  background: #020617;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
 }
 
 /* Footer */
