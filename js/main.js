@@ -10,7 +10,7 @@ const embedOptions = {
 const specs = [
   { id: "#vis-map1", path: "specs/map1_choropleth_density.vg.json" },
   { id: "#vis-map2", path: "specs/map2_proportional_symbols.vg.json" },
-  { id: "#vis-map3", path: "specs/map3_interstate_flows.vg.json" },
+  { id: "#vis-map3", path: "specs/map3_hex_cartogram.vg.json" },
   { id: "#vis-chart4", path: "specs/chart4_connected_scatterplot.vg.json" },
   { id: "#vis-chart5", path: "specs/chart5_horizon_growth.vg.json" },
   { id: "#vis-chart6", path: "specs/chart6_industry_treemap.vg.json" },
@@ -38,3 +38,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+
