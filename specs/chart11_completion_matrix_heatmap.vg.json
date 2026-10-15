@@ -3,15 +3,15 @@
   "title": {
     "text": "The Completion Gauntlet: Success Rates Across Sectors and Qualification Levels",
     "subtitle": "Cohort completion percentages by Australian Qualification Framework (AQF) level. Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
-  "height": 380,
+  "height": 320,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/completion_matrix_data.csv"
+    "url": "data/completion_matrix_data.csv"
   },
   "layer": [
     {
@@ -25,13 +25,21 @@
           "field": "Vocational_Sector",
           "type": "nominal",
           "title": "Vocational Discipline",
-          "axis": {"labelAngle": -30}
+          "axis": {
+            "labelAngle": -25,
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
         },
         "y": {
           "field": "AQF_Level",
           "type": "nominal",
           "title": "AQF Level",
-          "sort": ["Certificate II", "Certificate III (Trade)", "Certificate IV", "Diploma & Above"]
+          "sort": ["Certificate II", "Certificate III (Trade)", "Certificate IV", "Diploma & Above"],
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
         },
         "color": {
           "field": "Cohort_Completion_Rate_Pct",
@@ -45,7 +53,9 @@
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 180
+            "gradientLength": 180,
+            "titleFontSize": 11,
+            "labelFontSize": 10
           }
         },
         "tooltip": [
@@ -58,7 +68,7 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 12,
+        "fontSize": 11,
         "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif"
       },

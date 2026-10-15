@@ -67,17 +67,21 @@ The visualisations synthesize data from Australian government statistical releas
 │   ├── chart10_age_cohort_streamgraph.vg.json    # [Advanced] Streamgraph of Shifting Age Demographics
 │   └── chart11_completion_matrix_heatmap.vg.json # [Advanced] Matrix Heatmap of Cohort Completion Rates
 │
-└── data/                        # Clean, real-world Australian datasets (<700 KB total)
+└── data/                        # Clean, authentic Australian datasets (<700 KB total)
+    ├── original_sources/        # Unprocessed government downloads (NCVER & SA Skills Commission)
     ├── australia_states.geojson                  # Australian State & Territory boundaries
     ├── ncver_abs_state_summary.csv               # State apprentice numbers & ABS labour force per-capita
-    ├── australia_regional_hubs.csv               # 28 Metro & Regional training hubs with remoteness classes
+    ├── australia_regional_hubs.csv               # Metro & Regional training hubs with remoteness classes
     ├── australia_hex_cartogram.csv               # Spatial hexagonal tile layout for 8 states/territories
-    ├── ncver_timeseries_2000_2024.csv            # 20-year quarterly time series and policy eras
+    ├── ncver_timeseries_2000_2024.csv            # Official quarterly time series and policy cycles (NCVER)
+    ├── ncver_top10_trades.csv                    # Top 10 trade occupations commencements 2021-2025
+    ├── ncver_top10_nontrades.csv                 # Top 10 non-trade occupations commencements 2021-2025
     ├── ncver_industry_trades.csv                 # 19 Industry divisions, wages, and trade ratios
-    ├── jsa_occupation_shortages.csv              # Jobs and Skills Australia 2021-2024 shortage lists
+    ├── sa_vocation_gender_breakdown.csv          # Real SA Skills Commission gender microdata
+    ├── jsa_occupation_shortages.csv              # Jobs and Skills Australia shortage determinations
     ├── apprentice_wage_distributions.csv         # Stage 1-4 statutory award wages across disciplines
     ├── age_cohort_timeseries.csv                 # Annual age cohort shifts (under 19 vs adult 25+)
-    ├── ncver_demographics_diversity.csv          # 10-year demographic diversity shifts
+    ├── ncver_demographics_diversity.csv          # Equity and demographic characteristic breakdowns
     └── completion_matrix_data.csv                # Completion percentages across AQF qualification levels
 ```
 

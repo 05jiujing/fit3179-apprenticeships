@@ -1,18 +1,24 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "The 20-Year Apprenticeship Trajectory: Commencements vs Completions (2004–2024)",
-    "subtitle": "Connected scatterplot tracking quarterly vocational throughput across 6 policy eras. Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "text": "Apprenticeship Trajectory: Commencements vs Completions (2016–2025)",
+    "subtitle": "Connected scatterplot tracking quarterly vocational throughput across policy eras. Source: NCVER",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
   "height": 420,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_timeseries_2000_2024.csv"
+    "url": "data/ncver_timeseries_2000_2024.csv"
   },
+  "transform": [
+    {
+      "calculate": "datum.Year <= 2019 ? 'Pre-Pandemic Baseline (2016-19)' : (datum.Year <= 2022 ? 'COVID Wage Subsidy Boom (2020-22)' : 'Post-Subsidy Contraction (2023-25)')",
+      "as": "Policy_Era"
+    }
+  ],
   "layer": [
     {
       "mark": {
@@ -23,13 +29,13 @@
       },
       "encoding": {
         "x": {
-          "field": "Quarterly_Commencements",
+          "field": "Commencements",
           "type": "quantitative",
           "title": "Quarterly Commencements (New Enrolments)",
           "scale": {"zero": false}
         },
         "y": {
-          "field": "Quarterly_Completions",
+          "field": "Completions",
           "type": "quantitative",
           "title": "Quarterly Completions (Graduates)",
           "scale": {"zero": false}
@@ -40,21 +46,19 @@
           "type": "nominal",
           "scale": {
             "domain": [
-              "Pre-GFC Traineeship Expansion",
-              "Mining Boom & Stimulus",
-              "Traineeship All-Time Peak",
-              "Post-Reform Incentive Contraction",
-              "Structural Trough",
-              "Pre-Pandemic Plateau",
-              "COVID-19 BAC Wage Subsidy Launch",
-              "BAC 50% Subsidy Boom",
-              "All-Time Apprentice Surge",
-              "Subsidy Cliff & Transition",
-              "Australian Skills Guarantee Era"
+              "Pre-Pandemic Baseline (2016-19)",
+              "COVID Wage Subsidy Boom (2020-22)",
+              "Post-Subsidy Contraction (2023-25)"
             ],
-            "scheme": "tableau20"
+            "range": ["#64748b", "#0284c7", "#ef4444"]
           },
-          "legend": {"title": "Historical Policy Era", "orient": "bottom", "columns": 2}
+          "legend": {
+            "title": "Policy Era",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
         }
       }
     },
@@ -65,15 +69,15 @@
         "opacity": 0.9
       },
       "encoding": {
-        "x": {"field": "Quarterly_Commencements", "type": "quantitative"},
-        "y": {"field": "Quarterly_Completions", "type": "quantitative"},
+        "x": {"field": "Commencements", "type": "quantitative"},
+        "y": {"field": "Completions", "type": "quantitative"},
         "color": {"field": "Policy_Era", "type": "nominal"},
         "tooltip": [
           {"field": "Period", "type": "nominal", "title": "Quarter"},
-          {"field": "Quarterly_Commencements", "type": "quantitative", "format": ",", "title": "Commencements"},
-          {"field": "Quarterly_Completions", "type": "quantitative", "format": ",", "title": "Completions"},
-          {"field": "Total_In_Training", "type": "quantitative", "format": ",", "title": "Total In Training"},
-          {"field": "Policy_Era", "type": "nominal", "title": "Policy Context"}
+          {"field": "Commencements", "type": "quantitative", "format": ",", "title": "Commencements"},
+          {"field": "Completions", "type": "quantitative", "format": ",", "title": "Completions"},
+          {"field": "In_Training", "type": "quantitative", "format": ",", "title": "In Training"},
+          {"field": "Policy_Era", "type": "nominal", "title": "Era"}
         ]
       }
     },
@@ -81,22 +85,25 @@
       "data": {
         "values": [
           {
-            "commence": 29800,
-            "comp": 8400,
-            "text": "2022: Massive COVID BAC Surge (~30k/qtr)"
+            "commence": 71705,
+            "comp": 22495,
+            "text": "2020-Q4: BAC Subsidy Peak (71.7k)",
+            "align": "right",
+            "dx": -10,
+            "dy": -10
           },
           {
-            "commence": 8500,
-            "comp": 5800,
-            "text": "2016: Post-Reform Trough"
+            "commence": 22295,
+            "comp": 14825,
+            "text": "2020-Q2: Lockdown Trough",
+            "align": "left",
+            "dx": 8,
+            "dy": -8
           }
         ]
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 8,
-        "dy": -8,
         "fontSize": 11,
         "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif",
@@ -105,7 +112,10 @@
       "encoding": {
         "x": {"field": "commence", "type": "quantitative"},
         "y": {"field": "comp", "type": "quantitative"},
-        "text": {"field": "text", "type": "nominal"}
+        "text": {"field": "text", "type": "nominal"},
+        "align": {"field": "align", "type": "nominal"},
+        "dx": {"field": "dx", "type": "quantitative"},
+        "dy": {"field": "dy", "type": "quantitative"}
       }
     }
   ],

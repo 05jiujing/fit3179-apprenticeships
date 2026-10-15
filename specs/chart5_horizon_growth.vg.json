@@ -1,23 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Quarterly Pipeline Momentum: Net Intake vs Attrition (2004–2024)",
-    "subtitle": "Diverging area showing net pipeline change (Commencements minus Attrition/Completions). Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "text": "Quarterly Pipeline Momentum: Net Intake vs Loss (2016–2025)",
+    "subtitle": "Diverging area showing net pipeline change (Commencements minus Exits). Source: NCVER",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
-  "height": 380,
+  "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_timeseries_2000_2024.csv"
+    "url": "data/ncver_timeseries_2000_2024.csv"
   },
   "layer": [
     {
       "mark": {
         "type": "area",
-        "opacity": 0.5,
+        "opacity": 0.55,
         "line": {"color": "#0284c7", "width": 1.5}
       },
       "encoding": {
@@ -26,8 +26,8 @@
           "type": "nominal",
           "title": "Year & Quarter",
           "axis": {
-            "labelAngle": -45,
-            "values": ["2004-Q1", "2007-Q1", "2010-Q1", "2013-Q1", "2016-Q1", "2019-Q1", "2022-Q1", "2024-Q4"]
+            "labelAngle": 0,
+            "values": ["2016-Q1", "2018-Q1", "2020-Q1", "2022-Q1", "2024-Q1", "2025-Q4"]
           }
         },
         "y": {
@@ -41,7 +41,14 @@
             "value": "#0284c7"
           },
           "value": "#ef4444"
-        }
+        },
+        "tooltip": [
+          {"field": "Period", "type": "nominal", "title": "Quarter"},
+          {"field": "Commencements", "type": "quantitative", "format": ",", "title": "Commencements"},
+          {"field": "Completions", "type": "quantitative", "format": ",", "title": "Completions"},
+          {"field": "Cancellations_Withdrawals", "type": "quantitative", "format": ",", "title": "Cancellations"},
+          {"field": "Net_Quarterly_Change", "type": "quantitative", "format": "+,", "title": "Net Change"}
+        ]
       }
     },
     {
@@ -53,14 +60,14 @@
     {
       "data": {
         "values": [
-          {"period": "2021-Q1", "val": 12500, "text": "2021: BAC Wage Subsidy Inflow Peak"},
-          {"period": "2014-Q3", "val": -4500, "text": "2014: Post-Reform Deficit"}
+          {"period": "2020-Q4", "val": 28810, "text": "2020-Q4: +28.8k Subsidy Boom Peak"},
+          {"period": "2025-Q4", "val": -19820, "text": "2025-Q4: -19.8k Post-Subsidy Deficit"}
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": 600,
+        "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#0f172a",
         "dy": -10

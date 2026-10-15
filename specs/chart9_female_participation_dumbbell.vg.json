@@ -1,17 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "The Gender Divide in Australian Vocational Trades: 2014 vs 2024",
-    "subtitle": "Cleveland dumbbell plot tracking female representation shifts across 9 sectors. Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "text": "The Vocational Gender Divide: Female vs Male Share Across Disciplines",
+    "subtitle": "Cleveland dumbbell plot tracking gender disparity across active vocational vocations. Source: SA Skills Commission (2024)",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
   "height": 420,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_demographics_diversity.csv"
+    "url": "data/sa_vocation_gender_breakdown.csv"
   },
   "layer": [
     {
@@ -22,70 +22,83 @@
       },
       "encoding": {
         "y": {
-          "field": "Trade_Field",
+          "field": "Vocation",
           "type": "nominal",
-          "title": "Vocational Field",
-          "sort": {"field": "Female_Share_2024_Pct", "order": "ascending"}
+          "title": "Vocational Discipline",
+          "sort": {"field": "Female_Share_Pct", "order": "ascending"},
+          "axis": {"labelFontSize": 10}
         },
         "x": {
-          "field": "Female_Share_2014_Pct",
+          "field": "Female_Share_Pct",
           "type": "quantitative",
-          "title": "Female Representation (%)",
-          "scale": {"domain": [0, 95]}
+          "title": "Share of Active Learners (%)",
+          "scale": {"domain": [0, 100]}
         },
-        "x2": {"field": "Female_Share_2024_Pct"}
+        "x2": {"field": "Male_Share_Pct"}
       }
     },
     {
       "mark": {
         "type": "circle",
         "size": 110,
-        "color": "#94a3b8",
+        "color": "#0284c7",
         "opacity": 0.95
       },
       "encoding": {
-        "y": {"field": "Trade_Field", "type": "nominal", "sort": {"field": "Female_Share_2024_Pct", "order": "ascending"}},
-        "x": {"field": "Female_Share_2014_Pct", "type": "quantitative"},
+        "y": {
+          "field": "Vocation",
+          "type": "nominal",
+          "sort": {"field": "Female_Share_Pct", "order": "ascending"}
+        },
+        "x": {"field": "Male_Share_Pct", "type": "quantitative"},
         "tooltip": [
-          {"field": "Trade_Field", "type": "nominal", "title": "Field"},
-          {"field": "Female_Share_2014_Pct", "type": "quantitative", "format": ".1f", "title": "2014 Female Share (%)"},
-          {"field": "Classification", "type": "nominal", "title": "Type"}
+          {"field": "Vocation", "type": "nominal", "title": "Vocation"},
+          {"field": "Type", "type": "nominal", "title": "Type"},
+          {"field": "Male_Share_Pct", "type": "quantitative", "format": ".1f", "title": "Male Share (%)"},
+          {"field": "Male_Count", "type": "quantitative", "format": ",", "title": "Male Learners"}
         ]
       }
     },
     {
       "mark": {
         "type": "circle",
-        "size": 130,
+        "size": 110,
         "color": "#0d9488",
         "opacity": 0.95
       },
       "encoding": {
-        "y": {"field": "Trade_Field", "type": "nominal", "sort": {"field": "Female_Share_2024_Pct", "order": "ascending"}},
-        "x": {"field": "Female_Share_2024_Pct", "type": "quantitative"},
+        "y": {
+          "field": "Vocation",
+          "type": "nominal",
+          "sort": {"field": "Female_Share_Pct", "order": "ascending"}
+        },
+        "x": {"field": "Female_Share_Pct", "type": "quantitative"},
         "tooltip": [
-          {"field": "Trade_Field", "type": "nominal", "title": "Field"},
-          {"field": "Female_Share_2024_Pct", "type": "quantitative", "format": ".1f", "title": "2024 Female Share (%)"},
-          {"field": "Net_10Yr_Change_Pct", "type": "quantitative", "format": "+.1f", "title": "10-Year Change (%)"}
+          {"field": "Vocation", "type": "nominal", "title": "Vocation"},
+          {"field": "Type", "type": "nominal", "title": "Type"},
+          {"field": "Female_Share_Pct", "type": "quantitative", "format": ".1f", "title": "Female Share (%)"},
+          {"field": "Female_Count", "type": "quantitative", "format": ",", "title": "Female Learners"},
+          {"field": "Total_Learners", "type": "quantitative", "format": ",", "title": "Total Contracts"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"field": "Construction Trades", "x": 6.0, "text": "Construction: Only 3.8% female despite 10 years of campaigns"}
+          {"vocation": "Plumbing And/Or Gasfitting", "x": 10.0, "text": "Plumbing: 1.8% Female"},
+          {"vocation": "Child Care Aide", "x": 80.0, "text": "Child Care: 96.3% Female"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 11,
-        "fontWeight": 600,
+        "fontSize": 10.5,
+        "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#0f766e"
       },
       "encoding": {
-        "y": {"field": "field", "type": "nominal"},
+        "y": {"field": "vocation", "type": "nominal"},
         "x": {"field": "x", "type": "quantitative"},
         "text": {"field": "text", "type": "nominal"}
       }

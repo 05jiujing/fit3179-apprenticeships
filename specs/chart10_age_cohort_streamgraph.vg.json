@@ -3,15 +3,15 @@
   "title": {
     "text": "The Aging Apprentice: Demographic Transformation (2014–2024)",
     "subtitle": "Streamgraph illustrating the shift from teenage school leavers to adult apprentices (25+). Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/age_cohort_timeseries.csv"
+    "url": "data/age_cohort_timeseries.csv"
   },
   "layer": [
     {
@@ -45,7 +45,13 @@
             ],
             "range": ["#38bdf8", "#818cf8", "#f59e0b", "#f43f5e"]
           },
-          "legend": {"title": "Age Demographic", "orient": "bottom"}
+          "legend": {
+            "title": "Age Demographic",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelFontSize": 10,
+            "titleFontSize": 11
+          }
         },
         "tooltip": [
           {"field": "Year", "type": "ordinal", "title": "Year"},
@@ -57,20 +63,20 @@
     {
       "data": {
         "values": [
-          {"year": 2014, "text": "2014: School leavers represented 38.4% of apprentices"},
-          {"year": 2024, "text": "2024: Adult apprentices (25+) now form 36.2%"}
+          {"year": "2014", "y_pos": 45, "text": "2014: Youth Leavers 38.4%"},
+          {"year": "2024", "y_pos": 45, "text": "2024: Adult Learners 36.2%"}
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 11,
-        "fontWeight": 600,
+        "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#0f172a",
-        "dy": -120
+        "fill": "#0f172a"
       },
       "encoding": {
         "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "y_pos", "type": "quantitative", "axis": null},
         "text": {"field": "text", "type": "nominal"}
       }
     }

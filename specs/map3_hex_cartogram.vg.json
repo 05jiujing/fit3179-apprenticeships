@@ -1,62 +1,63 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Equal-Area Spatial Cartogram: State Completion Rates",
-    "subtitle": "Hexagonal geographic tile cartogram eliminating landmass distortion (2024). Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "text": "Equal-Area Cartogram: Post-Subsidy Contraction (2021 vs 2025)",
+    "subtitle": "Percentage change in quarterly commencements following wage subsidy expiry. Source: NCVER",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
   "height": 450,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_hex_cartogram.csv"
+    "url": "data/australia_hex_cartogram.csv"
   },
   "layer": [
     {
       "mark": {
         "type": "point",
-        "shape": "hexagon",
-        "size": 6500,
+        "shape": "M 0 -1 L 0.866 -0.5 L 0.866 0.5 L 0 1 L -0.866 0.5 L -0.866 -0.5 Z",
+        "size": 5200,
         "filled": true,
         "stroke": "#ffffff",
-        "strokeWidth": 2
+        "strokeWidth": 2.5
       },
       "encoding": {
         "x": {
           "field": "Grid_Col",
           "type": "quantitative",
-          "scale": {"domain": [0.3, 4.7]},
+          "scale": {"domain": [0.4, 4.6]},
           "axis": null
         },
         "y": {
           "field": "Grid_Row",
           "type": "quantitative",
-          "scale": {"domain": [0.4, 5.6], "reverse": true},
+          "scale": {"domain": [1.2, 6.8], "reverse": true},
           "axis": null
         },
         "color": {
-          "field": "Completion_Rate_Pct",
+          "field": "Change_Pct_2021_2025",
           "type": "quantitative",
-          "title": "Completion Rate (%)",
+          "title": "Change 2021–25 (%)",
           "scale": {
             "type": "linear",
-            "domain": [53, 62],
-            "scheme": "purples"
+            "domain": [-60, -10],
+            "scheme": "reds",
+            "reverse": true
           },
           "legend": {
             "orient": "bottom-right",
             "direction": "horizontal",
-            "gradientLength": 160
+            "gradientLength": 150
           }
         },
         "tooltip": [
           {"field": "State_Name", "type": "nominal", "title": "State / Territory"},
-          {"field": "Active_Apprentices", "type": "quantitative", "format": ",", "title": "Active Apprentices"},
-          {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Cohort Completion Rate (%)"},
-          {"field": "Trade_Share_Pct", "type": "quantitative", "format": ".1f", "title": "Trade Share (%)"},
-          {"field": "Dominant_Sector", "type": "nominal", "title": "Dominant Industry Focus"}
+          {"field": "State_Code", "type": "nominal", "title": "Code"},
+          {"field": "Commencements_2021", "type": "quantitative", "format": ",", "title": "2021 Peak Commencements"},
+          {"field": "Commencements_2025", "type": "quantitative", "format": ",", "title": "2025 Commencements"},
+          {"field": "Change_Pct_2021_2025", "type": "quantitative", "format": ".1f", "title": "% Change"}
         ]
       }
     },
@@ -67,7 +68,7 @@
         "fontWeight": 800,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#ffffff",
-        "dy": -8
+        "dy": -7
       },
       "encoding": {
         "x": {"field": "Grid_Col", "type": "quantitative"},
@@ -81,20 +82,20 @@
         "fontSize": 11,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#f1f5f9",
+        "fill": "#f8fafc",
         "dy": 10
       },
       "encoding": {
         "x": {"field": "Grid_Col", "type": "quantitative"},
         "y": {"field": "Grid_Row", "type": "quantitative"},
-        "text": {"field": "Completion_Rate_Pct", "type": "quantitative", "format": ".1f"}
+        "text": {"field": "Change_Pct_2021_2025", "type": "quantitative", "format": ".1f"}
       }
     },
     {
       "data": {
         "values": [
-          {"col": 4.1, "row": 2.2, "text": "ACT: Highest completion (61.2%)"},
-          {"col": 1.2, "row": 1.2, "text": "Equal-area geometry balances small jurisdictions"}
+          {"col": 1.1, "row": 1.6, "text": "NT: Lowest post-subsidy drop (-11.0%)"},
+          {"col": 1.0, "row": 5.8, "text": "Equal-area geometry balances small jurisdictions"}
         ]
       },
       "mark": {

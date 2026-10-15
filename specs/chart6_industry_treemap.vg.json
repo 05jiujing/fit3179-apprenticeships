@@ -1,12 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Treemap of Australian Apprenticeships by Industry Division (ANZSIC)",
-  "width": 780,
-  "height": 420,
+  "width": 850,
+  "height": 450,
   "padding": 5,
   "autosize": "fit",
   "title": {
-    "text": "Apprentice Distribution Across 19 Australian Industry Divisions (2024)",
+    "text": "Apprentice Distribution Across Australian Industry Divisions (2024)",
     "subtitle": "Tile area encodes total active apprentice population; color saturation encodes Trade Share (%). Source: NCVER",
     "fontSize": 16,
     "subtitleFontSize": 12,
@@ -15,8 +15,14 @@
   },
   "data": [
     {
-      "name": "industries",
-      "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_industry_trades.csv",
+      "name": "root_node",
+      "values": [
+        {"id": "ROOT", "parent": null, "Active_Apprentices": 0, "Industry_Name": "All Industries"}
+      ]
+    },
+    {
+      "name": "raw",
+      "url": "data/ncver_industry_trades.csv",
       "format": {
         "type": "csv",
         "parse": {
@@ -27,6 +33,19 @@
         }
       },
       "transform": [
+        {"type": "formula", "expr": "datum.Industry_Code", "as": "id"},
+        {"type": "formula", "expr": "'ROOT'", "as": "parent"}
+      ]
+    },
+    {
+      "name": "industries",
+      "source": ["root_node", "raw"],
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
         {
           "type": "treemap",
           "field": "Active_Apprentices",
@@ -35,6 +54,10 @@
           "method": "squarify",
           "ratio": 1.6,
           "size": [{"signal": "width"}, {"signal": "height"}]
+        },
+        {
+          "type": "filter",
+          "expr": "datum.id !== 'ROOT'"
         }
       ]
     }
@@ -62,15 +85,15 @@
           "x2": {"field": "x1"},
           "y2": {"field": "y1"},
           "fill": [
-            {"test": "!datum.children", "scale": "color", "field": "Trade_Share_Pct"},
-            {"value": "#f8fafc"}
+            {"test": "datum.Trade_Share_Pct !== null", "scale": "color", "field": "Trade_Share_Pct"},
+            {"value": "#0284c7"}
           ],
           "tooltip": {
-            "signal": "{'Industry': datum.Industry_Name, 'Active Apprentices': format(datum.Active_Apprentices, ','), 'Trade Share (%)': format(datum.Trade_Share_Pct, '.1f') + '%', 'Female Share (%)': format(datum.Female_Share_Pct, '.1f') + '%', 'Median Training Wage': '$' + datum.Median_Weekly_Training_Wage + ' /wk'}"
+            "signal": "{'Industry': datum.Industry_Name, 'Active Apprentices': format(datum.Active_Apprentices, ','), 'Trade Share (%)': format(datum.Trade_Share_Pct, '.1f') + '%', 'Female Share (%)': format(datum.Female_Share_Pct, '.1f') + '%'}"
           }
         },
         "hover": {
-          "fillOpacity": {"value": 0.8}
+          "fillOpacity": {"value": 0.85}
         }
       }
     },
@@ -82,7 +105,7 @@
         "enter": {
           "font": {"value": "Plus Jakarta Sans, sans-serif"},
           "fontSize": {"value": 11},
-          "fontWeight": {"value": 600},
+          "fontWeight": {"value": 700},
           "fill": [
             {"test": "datum.Trade_Share_Pct > 50", "value": "#ffffff"},
             {"value": "#0f172a"}
@@ -94,11 +117,11 @@
           "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
           "y": {"signal": "0.5 * (datum.y0 + datum.y1)"},
           "text": [
-            {"test": "(datum.x1 - datum.x0) > 75 && (datum.y1 - datum.y0) > 35", "field": "Industry_Name"},
+            {"test": "(datum.x1 - datum.x0) > 120 && (datum.y1 - datum.y0) > 45", "field": "Industry_Name"},
             {"value": ""}
           ],
           "fillOpacity": [
-            {"test": "(datum.x1 - datum.x0) > 75 && (datum.y1 - datum.y0) > 35", "value": 1},
+            {"test": "(datum.x1 - datum.x0) > 120 && (datum.y1 - datum.y0) > 45", "value": 1},
             {"value": 0}
           ]
         }
@@ -108,10 +131,10 @@
   "legends": [
     {
       "fill": "color",
-      "title": "Trade Concentration (%)",
+      "title": "Trade Share (%)",
       "orient": "bottom-right",
       "direction": "horizontal",
-      "gradientLength": 150,
+      "gradientLength": 140,
       "titleFont": "Plus Jakarta Sans, sans-serif",
       "labelFont": "Plus Jakarta Sans, sans-serif"
     }

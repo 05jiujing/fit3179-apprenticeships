@@ -3,22 +3,22 @@
   "title": {
     "text": "Apprentice Award Wages vs National Adult Minimum Wage",
     "subtitle": "Weekly statutory modern award wage progression (Stage 1 to Stage 4). Source: Fair Work Commission (2024)",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
   "width": "container",
   "height": 420,
   "data": {
-    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/apprentice_wage_distributions.csv"
+    "url": "data/apprentice_wage_distributions.csv"
   },
   "layer": [
     {
       "mark": {
         "type": "boxplot",
         "extent": "min-max",
-        "size": 32,
+        "size": 28,
         "color": "#0284c7",
         "median": {"color": "#ffffff", "size": 2}
       },
@@ -27,13 +27,16 @@
           "field": "Sector",
           "type": "nominal",
           "title": "Trade & Traineeship Award Sector",
-          "axis": {"labelAngle": -30}
+          "axis": {
+            "labelAngle": -25,
+            "labelFontSize": 10
+          }
         },
         "y": {
           "field": "Weekly_Award_Wage_AUD",
           "type": "quantitative",
           "title": "Weekly Award Wage (AUD)",
-          "scale": {"domain": [400, 1100]}
+          "scale": {"domain": [400, 1150]}
         },
         "tooltip": [
           {"field": "Sector", "type": "nominal", "title": "Award Sector"},
@@ -57,7 +60,7 @@
     {
       "data": {
         "values": [
-          {"sector": "Electrotechnology", "wage": 940, "text": "National Adult Minimum Wage: $915.90 / wk"}
+          {"sector": "Automotive Mechanical", "wage": 945, "text": "Adult Minimum Wage ($915.90/wk)"}
         ]
       },
       "mark": {

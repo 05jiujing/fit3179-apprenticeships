@@ -3,8 +3,8 @@
   "title": {
     "text": "Metropolitan vs Regional Apprenticeship Training Centers",
     "subtitle": "Active apprentice volumes and trade focus across 28 official NCVER training hubs (2024). Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
+    "fontSize": 15,
+    "subtitleFontSize": 11,
     "anchor": "start",
     "font": "Plus Jakarta Sans, sans-serif"
   },
@@ -30,7 +30,7 @@
   "layer": [
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_states.geojson",
+        "url": "data/australia_states.geojson",
         "format": {"type": "json", "property": "features"}
       },
       "mark": {
@@ -42,7 +42,7 @@
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_regional_hubs.csv"
+        "url": "data/australia_regional_hubs.csv"
       },
       "transform": [
         {
@@ -69,7 +69,10 @@
           },
           "legend": {
             "orient": "bottom-right",
-            "values": [5000, 25000, 60000]
+            "title": "Active Learners",
+            "values": [10000, 50000],
+            "format": ",d",
+            "symbolFillColor": "#fdba74"
           }
         },
         "color": {
@@ -84,7 +87,7 @@
           "legend": {
             "orient": "bottom-left",
             "direction": "horizontal",
-            "gradientLength": 140
+            "gradientLength": 130
           }
         },
         "tooltip": [
@@ -100,8 +103,8 @@
     {
       "data": {
         "values": [
-          {"lon": 116.8, "lat": -19.5, "text": "Pilbara: 88.4% Heavy Mining Trades"},
-          {"lon": 149.2, "lat": -20.2, "text": "Mackay: 84.2% Industrial Mechanical"}
+          {"lon": 121.5, "lat": -21.5, "text": "Pilbara: 88.4% Trade Focus"},
+          {"lon": 141.0, "lat": -21.0, "text": "Mackay: 84.2% Industrial Mechanical"}
         ]
       },
       "mark": {
@@ -109,7 +112,8 @@
         "fontSize": 11,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#9a3412"
+        "fill": "#9a3412",
+        "align": "left"
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},

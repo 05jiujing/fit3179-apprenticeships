@@ -1,10 +1,7 @@
-"Trade_Field","Classification","Female_Share_2014_Pct","Female_Share_2024_Pct","Net_10Yr_Change_Pct","Source"
-"Construction Trades","Traditional Trade","2.1","3.8","1.7","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Electrotechnology Trades","Traditional Trade","1.8","4.1","2.3","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Automotive & Metal Trades","Traditional Trade","2.4","5.4","3","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Engineering & Fabrication Trades","Traditional Trade","2.2","5.1","2.9","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Commercial Cookery & Food Trades","Traditional Trade","27.8","36.4","8.6","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Hairdressing & Personal Services","Services Trade","88.4","84.2","-4.2","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Care & Social Assistance Traineeships","Non-Trade Traineeship","75.1","79.2","4.1","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Business & Clerical Traineeships","Non-Trade Traineeship","61.8","58.4","-3.4","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
-"Transport & Logistics Traineeships","Non-Trade Traineeship","15.2","21.4","6.2","NCVER National Apprentice and Trainee Collection (Gender Databuilder)"
+﻿Characteristic,Trade_Status,Count_2021,Count_2022,Count_2023,Count_2024,Count_2025,Change_Pct_2021_2025
+"Group",All Occupations,66,67,68,69,70,409
+"With a disability",All Occupations,1790,1735,1690,1495,1360,-24
+"Indigenous",All Occupations,2835,2620,2695,2215,2195,-22.6
+"Language other than English",All Occupations,6510,3735,4005,2960,3380,-48.1
+"Females",All Occupations,20080,12650,12310,9550,9850,-51
+"Regional and remote",All Occupations,17145,12840,12490,10420,11070,-35.4
