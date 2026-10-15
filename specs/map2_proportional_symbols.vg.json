@@ -30,7 +30,7 @@
   "layer": [
     {
       "data": {
-        "url": "data/australia_states.geojson",
+        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_states.geojson",
         "format": {"type": "json", "property": "features"}
       },
       "mark": {
@@ -41,7 +41,7 @@
       }
     },
     {
-      "data": {"url": "data/australia_regional_hubs.csv"},
+      "data": {"url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_regional_hubs.csv"},
       "transform": [
         {
           "filter": "Region_Filter == 'All' || datum.Region_Type == Region_Filter"

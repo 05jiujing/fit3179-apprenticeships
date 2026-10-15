@@ -11,7 +11,7 @@
   "width": "container",
   "height": 420,
   "data": {
-    "url": "data/apprentice_wage_distributions.csv"
+    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/apprentice_wage_distributions.csv"
   },
   "layer": [
     {

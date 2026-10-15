@@ -16,7 +16,7 @@
   "data": [
     {
       "name": "industries",
-      "url": "data/ncver_industry_trades.csv",
+      "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_industry_trades.csv",
       "format": {"type": "csv", "parse": {"Active_Apprentices": "number", "Trades_Share_Pct": "number", "Female_Share_Pct": "number"}},
       "transform": [
         {

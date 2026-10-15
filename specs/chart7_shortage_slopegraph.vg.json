@@ -11,7 +11,7 @@
   "width": "container",
   "height": 420,
   "data": {
-    "url": "data/jsa_occupation_shortages.csv"
+    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/jsa_occupation_shortages.csv"
   },
   "transform": [
     {"filter": "datum.Priority_Tier != 'Tier 4 No Shortage'"},

@@ -11,7 +11,7 @@
   "width": "container",
   "height": 380,
   "data": {
-    "url": "data/ncver_timeseries_2000_2024.csv"
+    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_timeseries_2000_2024.csv"
   },
   "transform": [
     {"filter": "datum.Year >= 2005"},

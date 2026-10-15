@@ -31,14 +31,14 @@
   "layer": [
     {
       "data": {
-        "url": "data/australia_states.geojson",
+        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_states.geojson",
         "format": {"type": "json", "property": "features"}
       },
       "transform": [
         {
           "lookup": "properties.STATE_NAME",
           "from": {
-            "data": {"url": "data/ncver_abs_state_summary.csv"},
+            "data": {"url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_abs_state_summary.csv"},
             "key": "State_Name",
             "fields": [
               "Year",

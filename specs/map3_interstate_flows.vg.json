@@ -31,7 +31,7 @@
   "layer": [
     {
       "data": {
-        "url": "data/australia_states.geojson",
+        "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/australia_states.geojson",
         "format": {"type": "json", "property": "features"}
       },
       "mark": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "data": {"url": "data/interstate_training_flows.csv"},
+      "data": {"url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/interstate_training_flows.csv"},
       "transform": [
         {"filter": "datum.Trainee_Count >= Min_Trainees"}
       ],

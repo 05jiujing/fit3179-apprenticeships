@@ -11,7 +11,7 @@
   "width": "container",
   "height": 420,
   "data": {
-    "url": "data/ncver_demographics_diversity.csv"
+    "url": "https://raw.githubusercontent.com/05jiujing/fit3179-apprenticeships/main/data/ncver_demographics_diversity.csv"
   },
   "transform": [
     {"filter": "datum.Demographic_Type == 'Gender'"}

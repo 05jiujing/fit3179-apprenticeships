@@ -1,9 +1,20 @@
 // FIT3179 Data Visualisation 2 - Main Embedding Script
 
 const embedOptions = {
-  actions: { export: true, source: false, compiled: false, editor: false },
+  actions: { 
+    export: true, 
+    source: true, 
+    compiled: false, 
+    editor: true 
+  },
   renderer: "canvas",
-  scaleFactor: 2
+  scaleFactor: 2,
+  i18n: {
+    SVG_ACTION: "Save as SVG",
+    PNG_ACTION: "Save as PNG",
+    SOURCE_ACTION: "View Source",
+    EDITOR_ACTION: "Open in Vega Editor"
+  }
 };
 
 const specs = [
@@ -27,12 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Embed successful
       })
       .catch(err => {
-        console.error(`Error embedding ${spec.path}:`, err);
+        console.error(Error embedding ${spec.path}:, err);
         const container = document.querySelector(spec.id);
         if (container) {
-          container.innerHTML = `<div style="padding:20px; color:#ef4444; background:#fef2f2; border-radius:8px;">
+          container.innerHTML = <div style="padding:20px; color:#ef4444; background:#fef2f2; border-radius:8px;">
             Failed to render chart: ${spec.path}. Check console for details.
-          </div>`;
+          </div>;
         }
       });
   });
