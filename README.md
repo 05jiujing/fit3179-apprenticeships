@@ -25,18 +25,19 @@ Designed following **Tamara Munzner’s What/Why/How visualisation framework**, 
 ---
 
 ## Multi-Source Real-World Datasets
-All data points reflect verified public Australian records combining official government and statutory agencies:
+The visualisations synthesize data from Australian government statistical releases, statutory wage determinations, and open-data microdata:
 1. **NCVER (National Centre for Vocational Education Research):**
-   * *Apprentices and Trainees Collection No. 120 (March Quarter 2024)* — State-level in-training, trades vs non-trades, commencements, and completions.
-   * *Historical 20-Year Time Series (2004–2024)* — Long-term quarterly throughput and policy cycles.
+   * *Apprentices and Trainees Collection No. 120 (March Quarter 2024)* — National headline totals (351,695 total in-training; 238,765 trade; 112,895 non-trade) and state-level commencement and completion activity.
+   * *Historical 20-Year Quarterly Series (2004–2024)* — Macroeconomic trends, policy incentives (e.g. 2012 uncapped incentives, 2020–2022 Boosting Apprenticeship Commencements).
    * *Completion and Attrition Rates for Apprentices and Trainees* — Qualification-level completion matrices.
-   * *Gender and Age Databuilder Extracts* — Demographic shifts from 2014 to 2024.
 2. **ABS (Australian Bureau of Statistics):**
-   * *Labour Force, Australia (Catalogue 6202.0, Table 12)* — Employed persons by State and Territory to calculate genuine per-capita training rates per 1,000 workers.
-3. **Jobs and Skills Australia (JSA):**
+   * *Labour Force, Australia (Catalogue 6202.0, Table 010 / Table 12)* — Employed persons across Australia's 8 states and territories to calculate apprentice density per 1,000 workers.
+3. **South Australian Skills Commission (Data.SA):**
+   * *October 2024 In-Training Dataset* (23,448 authentic individual apprentice records) — Microdata detailing regional vocations, qualifications, and demographics.
+4. **Jobs and Skills Australia (JSA):**
    * *Skills Priority List (SPL 2021–2024)* — Official occupational shortage determinations across ANZSCO 4-digit occupations.
-4. **Fair Work Commission:**
-   * *Annual Wage Review 2024 & Modern Award Schedules* — Statutory weekly apprentice wage progression (Stages 1 to 4) compared to the National Adult Minimum Wage ($915.90/week).
+5. **Fair Work Commission:**
+   * *Annual Wage Review 2024 ($915.90/week baseline) & Modern Award Schedules* — Statutory weekly apprentice wage progression (Stages 1 to 4) under MA000020 (Building), MA000025 (Electrical), and MA000010 (Manufacturing).
 
 ---
 
@@ -56,7 +57,7 @@ All data points reflect verified public Australian records combining official go
 ├── specs/                       # Formatted, human-readable Vega/Vega-Lite JSON specifications
 │   ├── map1_choropleth_density.vg.json           # [Map 1 - Advanced] Choropleth of State Density (Per 1k workers)
 │   ├── map2_proportional_symbols.vg.json         # [Map 2 - Advanced] Proportional Symbol Map of Training Hubs
-│   ├── map3_interstate_flows.vg.json             # [Map 3 - Advanced] Equal-Area Hexagonal Spatial Cartogram
+│   ├── map3_hex_cartogram.vg.json                # [Map 3 - Advanced] Equal-Area Hexagonal Spatial Cartogram
 │   ├── chart4_connected_scatterplot.vg.json      # [Advanced] Connected Scatterplot (2004-2024 Phase Trajectory)
 │   ├── chart5_horizon_growth.vg.json             # [Advanced] Horizon / Diverging Area (Subsidy Shock)
 │   ├── chart6_industry_treemap.vg.json           # [Advanced] Treemap of 19 ANZSIC Industry Divisions
@@ -83,5 +84,5 @@ All data points reflect verified public Australian records combining official go
 ---
 
 ## Academic Integrity & Generative AI Acknowledgement
-In accordance with Monash University Learn HQ guidelines, generative artificial intelligence tools were employed for typographic layout styling, CSS responsiveness, and proofreading narrative text. All underlying statistical figures are sourced from authentic Australian public databases (NCVER, ABS, JSA, Fair Work Commission).
+In accordance with Monash University Learn HQ guidelines, generative artificial intelligence tools were employed for typographic layout styling, CSS responsiveness, and proofreading narrative text. Data synthesizes Australian public statistical releases (NCVER, ABS), state open microdata (Data.SA), statutory wage determinations (Fair Work Commission), and national shortage lists (Jobs and Skills Australia).
 
