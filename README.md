@@ -1,12 +1,17 @@
-# FIT3179 Data Visualisation 2: Apprenticeships and Traineeships Across Australia
+# Rebuilding the Nation: Apprenticeships and Traineeships Across Australia
 
 [![Monash University](https://img.shields.io/badge/Monash%20University-FIT3179-blue.svg)](https://www.monash.edu)
 [![Vega-Lite](https://img.shields.io/badge/Vega--Lite-v5-orange.svg)](https://vega.github.io/vega-lite/)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-## Live Visualisation URL
-🔗 **GitHub Pages Link:** `https://<your-github-username>.github.io/<your-repo-name>/`  
-*(Enable GitHub Pages in Repository Settings > Pages > Source: Deploy from branch `main` / root)*
+## Live Visualisation Dashboard
+🔗 **GitHub Pages Link:** [https://05jiujing.github.io/fit3179-apprenticeships/](https://05jiujing.github.io/fit3179-apprenticeships/)
+
+---
+
+## Author
+* **Author:** Ho Jia Jun
+* **Student ID:** 34676406
 
 ---
 
@@ -59,15 +64,8 @@ It is designed following **Tamara Munzner’s What/Why/How visualisation framewo
 
 ---
 
-## Data Sources & Authorship
+## Data Sources & Methodology
 Data for this project combines multiple verified Australian public repositories:
 1. **NCVER (National Centre for Vocational Education Research):** *Apprentices and Trainees Collection (Historical time series, quarterly collections & VOCSTATS).* [ncver.edu.au](https://www.ncver.edu.au)
 2. **Jobs and Skills Australia (JSA):** *Occupational Shortage List (OSL) & Skills Priority List.* [jobsandskills.gov.au](https://www.jobsandskills.gov.au)
 3. **Australian Bureau of Statistics (ABS):** *Labour Force Australia (Cat 6202.0) & Regional Population Data.* [abs.gov.au](https://www.abs.gov.au)
-
----
-
-## Author
-* **Student Name:** [Your Name]
-* **Student ID:** [Your ID]
-* **Unit:** FIT3179 Data Visualisation 2, Monash University

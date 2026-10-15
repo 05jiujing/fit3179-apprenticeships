@@ -24,16 +24,15 @@
     
     <!-- Hero / Title Header -->
     <header class="hero-banner">
-      <span class="badge-tag">FIT3179 Data Visualisation 2</span>
+      <span class="badge-tag">Interactive Data Visualisation</span>
       <h1>Rebuilding the Nation: Apprenticeships and Traineeships Across Australia</h1>
       <p class="lead-subtitle">
-        An interactive exploration of Australia’s vocational pipeline: analyzing geographic density, historical policy cycles, persistent skill shortages, and the completion crisis.
+        An in-depth exploration of Australia’s vocational pipeline: analyzing geographic density, historical policy cycles, persistent skill shortages, and the completion crisis.
       </p>
       
       <div class="metadata-strip">
-        <span><strong>Author:</strong> Student Name</span>
-        <span><strong>Student ID:</strong> 12345678</span>
-        <span><strong>Unit:</strong> FIT3179 Semester 2, 2026</span>
+        <span><strong>Author:</strong> Ho Jia Jun</span>
+        <span><strong>Student ID:</strong> 34676406</span>
         <span><strong>Primary Sources:</strong> NCVER, Jobs & Skills Australia, ABS</span>
       </div>
     </header>
@@ -51,6 +50,10 @@
       <!-- Map 1: Full Width Choropleth -->
       <div class="chart-grid-1">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">01 / CHOROPLETH MAP</span>
+            <a href="specs/map1_choropleth_density.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-map1" class="vis-container"></div>
           <div class="card-caption">
             <strong>Key Insight:</strong> Queensland leads the country with over 32 apprentices per 1,000 workers, powered by high infrastructure investment and heavy decentralised regional hubs. Use the slider above the map to observe the 2020–2022 COVID subsidy expansion.
@@ -61,6 +64,10 @@
       <!-- Map 2 & Map 3: 2-Column Grid -->
       <div class="chart-grid-2">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">02 / PROPORTIONAL SYMBOL MAP</span>
+            <a href="specs/map2_proportional_symbols.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-map2" class="vis-container"></div>
           <div class="card-caption">
             <strong>Map Idiom 2 (Proportional Symbol Map):</strong> While capital cities train large numbers of service trainees, regional and remote hubs like the Pilbara and Mackay feature extraordinary trade concentrations (>85%) centered on mining and heavy engineering.
@@ -68,6 +75,10 @@
         </div>
 
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">03 / FLOW & CONNECTION MAP</span>
+            <a href="specs/map3_interstate_flows.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-map3" class="vis-container"></div>
           <div class="card-caption">
             <strong>Map Idiom 3 (Interstate Flow Map):</strong> Cross-border training contracts reveal critical interdependencies. NSW and Victoria maintain high reciprocal flows, while South Australia and Western Australia supply specialized defence and offshore technicians interstate.
@@ -88,6 +99,10 @@
 
       <div class="chart-grid-2">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">04 / CONNECTED SCATTERPLOT</span>
+            <a href="specs/chart4_connected_scatterplot.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart4" class="vis-container"></div>
           <div class="card-caption">
             <strong>Connected Scatterplot:</strong> Tracing quarterly commencements against completions exposes severe pipeline lags. The 2021 Boosting Apprenticeship Commencements (BAC) stimulus drove record enrolments, but graduate completions follow years later.
@@ -95,6 +110,10 @@
         </div>
 
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">05 / HORIZON DIVERGING GRAPH</span>
+            <a href="specs/chart5_horizon_growth.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart5" class="vis-container"></div>
           <div class="card-caption">
             <strong>Horizon / Diverging Area Chart:</strong> Net quarterly additions (commencements minus dropouts) plummeted into severe contraction following the 2012 incentive crackdown, before rebounding dramatically to +16,500/qtr during the 2021 wage subsidy.
@@ -116,6 +135,10 @@
       <!-- Chart 6: Full Width Treemap -->
       <div class="chart-grid-1">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">06 / TREEMAP</span>
+            <a href="specs/chart6_industry_treemap.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart6" class="vis-container"></div>
           <div class="card-caption">
             <strong>Treemap:</strong> Construction accounts for over 118,000 active apprentices with 92.6% trade concentration, whereas large service sectors like Health Care & Social Assistance rely predominantly on short-duration traineeships.
@@ -125,6 +148,10 @@
 
       <div class="chart-grid-2">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">07 / SLOPEGRAPH</span>
+            <a href="specs/chart7_shortage_slopegraph.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart7" class="vis-container"></div>
           <div class="card-caption">
             <strong>Slopegraph:</strong> Jobs and Skills Australia shortage ratings show 16 critical trade categories—including electricians, carpenters, plumbers, and mechanics—locked in acute national shortage between 2021 and 2024.
@@ -132,6 +159,10 @@
         </div>
 
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">08 / BOX PLOT</span>
+            <a href="specs/chart8_wage_distribution_boxplot.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart8" class="vis-container"></div>
           <div class="card-caption">
             <strong>Box Plot:</strong> Stage 1 and Stage 2 apprentices across several key trades receive award wages significantly below the National Minimum Full-Time Wage ($915/wk), triggering financial dropouts in the early years.
@@ -152,6 +183,10 @@
 
       <div class="chart-grid-2">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">09 / CLEVELAND DUMBBELL PLOT</span>
+            <a href="specs/chart9_female_participation_dumbbell.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart9" class="vis-container"></div>
           <div class="card-caption">
             <strong>Cleveland Dumbbell Plot:</strong> Over the last decade, female participation in heavy trades has barely budged (Construction: 2.1% → 3.8%; Electrotechnology: 1.8% → 4.1%), highlighting persistent cultural and structural barriers.
@@ -159,6 +194,10 @@
         </div>
 
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">10 / STREAMGRAPH</span>
+            <a href="specs/chart10_age_cohort_streamgraph.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart10" class="vis-container"></div>
           <div class="card-caption">
             <strong>Streamgraph:</strong> Traditional school leavers (under 19) have declined from 38.5% to 29.2% of all apprentices, while adult apprentices (aged 25+) have grown to represent over 36% of the national intake.
@@ -169,6 +208,10 @@
       <!-- Chart 11: Matrix Heatmap -->
       <div class="chart-grid-1">
         <div class="vis-card">
+          <div class="chart-top-bar">
+            <span class="chart-tag">11 / MATRIX HEATMAP</span>
+            <a href="specs/chart11_completion_matrix_heatmap.vg.json" target="_blank" class="spec-link">Specification ↗</a>
+          </div>
           <div id="vis-chart11" class="vis-container"></div>
           <div class="card-caption">
             <strong>Matrix Heatmap:</strong> Completion rates differ widely by AQF level and discipline. Commercial Cookery (44.1%) and Automotive (51.8%) struggle with severe early attrition, whereas Certificate IV Electrotechnology achieves strong 69.2% completion.
@@ -179,9 +222,9 @@
 
     <!-- Footer & References -->
     <footer class="project-footer">
-      <h3>Data Sources, Authorship & Academic Compliance</h3>
+      <h3>Data Sources, Authorship & Methodology</h3>
       <p>
-        This data visualisation project was created for <strong>FIT3179 Data Visualisation 2</strong> at Monash University. 
+        This data visualisation project was created by <strong>Ho Jia Jun</strong> (ID: 34676406). 
         It integrates multi-source public datasets from official Australian government and research bodies:
       </p>
       <ul style="margin-left: 20px; margin-bottom: 16px; line-height: 1.8;">
@@ -195,11 +238,11 @@
         </li>
         <li>
           <strong>Australian Bureau of Statistics (ABS):</strong> 
-          <a href="https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia" target="_blank" rel="noopener">Labour Force Survey (Cat 6202.0)</a> & Regional Population Estimates.
+          <a href="https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia" target="_blank" rel="noopener">Labour Force Australia (Cat 6202.0)</a> & Regional Population Estimates.
         </li>
       </ul>
       <p>
-        <strong>Design Rationale:</strong> Complies with Tamara Munzner’s What/Why/How framework, incorporating 11 distinct visualizations featuring 11 advanced idioms (including 3 distinct spatial map idioms). Zero client-side data bloat (<700 KB total data payload).
+        <strong>Design Rationale:</strong> Built using Tamara Munzner’s What/Why/How framework, incorporating 11 distinct visualizations featuring 11 advanced idioms (including 3 distinct spatial map idioms). Total dataset payload under 700 KB.
       </p>
     </footer>
 
