@@ -34,7 +34,7 @@
         <span><strong>Author:</strong> Ho Jia Jun</span>
         <span><strong>Student ID:</strong> 34676406</span>
         <span><strong>Published:</strong> October 2026</span>
-        <span><strong>Primary Sources:</strong> NCVER, ABS Labour Force (6202.0), JSA & Fair Work Commission</span>
+        <span><strong>Primary Sources:</strong> NCVER, ABS Labour Force (6202.0), JSA &amp; Fair Work Commission</span>
       </div>
     </header>
 
@@ -44,7 +44,7 @@
         <span class="section-badge">Section 1: Geographic Distribution</span>
         <h2>1. The Geographic Landscape of Australian Training</h2>
         <p>
-          Australia’s 351,695 apprentices and trainees are not distributed evenly across the federation. State economic structures, major infrastructure pipelines, and regional mining operations shape where vocational learners concentrate.
+          Australia’s apprentices and trainees are not distributed evenly across the federation. State economic structures, major infrastructure pipelines, and regional mining operations shape where vocational learners concentrate.
         </p>
       </div>
 
@@ -52,72 +52,91 @@
       <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">01 / CHOROPLETH MAP</span>
+            <span class="chart-tag">01 / Choropleth Map</span>
             <a href="specs/map1_choropleth_density.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Apprentice Density by State and Territory</h3>
+          <p class="chart-sub">Apprentices in-training per 1,000 employed workers across Australian jurisdictions (2021–2025).</p>
           <div id="vis-map1" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER, Apprentices and trainees, December quarter 2025 &amp; ABS Labour Force (6202.0).</p>
           <div class="card-caption">
-            <strong>Key Insight:</strong> Queensland leads mainland Australia with 29.2 apprentices per 1,000 employed workers, driven by heavy infrastructure investments and regional industrial centers. Use the slider above to observe the 2020–2022 COVID Boosting Apprenticeship Commencements (BAC) expansion and subsequent contraction.
+            Colour shows apprentices in training per 1,000 employed people. Tasmania ranks highest every year (47.1 in 2022, 30.4 in 2025), and Queensland leads the mainland. Drag the year to see every state fall after 2022.
           </div>
         </div>
       </div>
 
-      <!-- Map 2 & Map 3: 2-Column Grid -->
-      <div class="chart-grid-2">
+      <!-- Map 2: Full Width Proportional Symbol Map -->
+      <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">02 / PROPORTIONAL SYMBOL MAP</span>
+            <span class="chart-tag">02 / Proportional Symbol Map</span>
             <a href="specs/map2_proportional_symbols.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Regional Training Hubs &amp; Trade Focus</h3>
+          <p class="chart-sub">Active apprentices and trade concentration across major training centres.</p>
           <div id="vis-map2" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER &amp; ABS Regional ASGS geographic data.</p>
           <div class="card-caption">
-            <strong>Map Idiom 2 (Proportional Symbol Map):</strong> Capital cities train large volumes of clerical and service trainees, whereas remote resource hubs like the Pilbara (88.4%) and Mount Isa (87.9%) feature overwhelming concentrations in heavy mechanical and electrical trades.
+            Each circle is a training hub, sized by learners. Capitals are largest, but resource regions such as the Pilbara have the highest trade share. Use the dropdown to isolate remoteness.
           </div>
         </div>
+      </div>
 
+      <!-- Map 3: Full Width Equal-Area Hex Cartogram -->
+      <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">03 / EQUAL-AREA SPATIAL CARTOGRAM</span>
+            <span class="chart-tag">03 / Equal-Area Spatial Cartogram</span>
             <a href="specs/map3_hex_cartogram.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Contraction of Commencements by State (2021–2025)</h3>
+          <p class="chart-sub">Equal-area hex cartogram showing the percentage fall in new apprentice commencements from the subsidy peak to 2025.</p>
           <div id="vis-map3" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER, Apprentices and trainees collection.</p>
           <div class="card-caption">
-            <strong>Map Idiom 3 (Equal-Area Hexagonal Cartogram):</strong> Eliminating landmass distortion highlights varying post-subsidy contraction rates across Australian jurisdictions (2021 vs 2025). While South Australia (-57.1%) and Tasmania (-52.9%) experienced steep declines, the Northern Territory (-11.0%) demonstrated the strongest resilience.
+            Each hexagon is one state or territory, the same size so small places are visible. Commencements fell in every jurisdiction from December 2021 to December 2025, from −11.0% in the Northern Territory to −57.1% in South Australia.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: THE 20-YEAR EVOLUTION & POLICY SHOCKS -->
+    <!-- SECTION 2: LONGITUDINAL EVOLUTION & POLICY SHOCKS -->
     <section class="story-section">
       <div class="section-header">
         <span class="section-badge">Section 2: Longitudinal Evolution</span>
-        <h2>2. Decades of Policy Shocks & The Subsidy Rollercoaster</h2>
+        <h2>2. Decades of Policy Shocks &amp; The Subsidy Rollercoaster</h2>
         <p>
-          Over the past 20 years, federal incentive structures have caused severe enrolment volatility—from the aggressive pre-2012 non-trade traineeship expansion to the emergency 50% wage subsidies deployed during the COVID-19 pandemic.
+          Over the past decade, federal incentive structures have caused severe enrolment volatility—from the baseline pre-COVID years to the emergency 50% wage subsidies deployed during the pandemic.
         </p>
       </div>
 
+      <!-- Charts 4 & 5: Side by Side -->
       <div class="chart-grid-2">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">04 / CONNECTED SCATTERPLOT</span>
+            <span class="chart-tag">04 / Connected Scatterplot</span>
             <a href="specs/chart4_connected_scatterplot.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Commencements vs completions, 2016–2025</h3>
+          <p class="chart-sub">Each dot is one quarter; the line joins them in time order.</p>
           <div id="vis-chart4" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER, Apprentices and trainees, December quarter 2025.</p>
           <div class="card-caption">
-            <strong>Connected Scatterplot:</strong> Tracing quarterly commencements against completions exposes deep structural pipeline lags. While the 2021–2022 BAC subsidy triggered nearly 30,000 quarterly commencements, completion surges occur 3 to 4 years later due to standard multi-year training indentures.
+            Each dot is one quarter. Commencements surged from about 22,000 in 2020-Q2 to 99,410 in 2022-Q1, but completions stayed between 14,800 and 32,600 throughout. The wage subsidy filled the pipeline, not the exits.
           </div>
         </div>
 
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">05 / HORIZON DIVERGING GRAPH</span>
+            <span class="chart-tag">05 / Diverging Area Chart</span>
             <a href="specs/chart5_horizon_growth.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Net change in apprentices, by quarter</h3>
+          <p class="chart-sub">Quarterly balance of new commencements against cancellations, withdrawals, and completions (2016–2025).</p>
           <div id="vis-chart5" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER, Apprentices and trainees historical collection.</p>
           <div class="card-caption">
-            <strong>Diverging Horizon Area Chart:</strong> Net quarterly additions (commencements minus dropouts and completions) contracted sharply following the 2012 incentive crackdown, hitting persistent deficits until emergency COVID subsidies injected a record positive net inflow of over 12,500/quarter in 2021.
+            Above the line, more people joined than left. The biggest gain was +43,945 in 2022-Q1. The biggest loss was −30,870 in 2022-Q4, and numbers have fallen almost every quarter since, to 282,430 in December 2025.
           </div>
         </div>
       </div>
@@ -126,8 +145,8 @@
     <!-- SECTION 3: INDUSTRY DISPARITIES & SHORTAGES -->
     <section class="story-section">
       <div class="section-header">
-        <span class="section-badge">Section 3: Sector Breakdown & Shortages</span>
-        <h2>3. The Trade Bottleneck, Demand & Wage Realities</h2>
+        <span class="section-badge">Section 3: Sector Breakdown &amp; Shortages</span>
+        <h2>3. The Trade Bottleneck, Demand &amp; Wage Realities</h2>
         <p>
           Australia’s national infrastructure pipeline and housing targets face severe constraints: traditional trade occupations remain locked in acute national shortage, while entry-level apprentice award wages lag behind the adult minimum living wage.
         </p>
@@ -137,36 +156,49 @@
       <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">06 / TREEMAP</span>
+            <span class="chart-tag">06 / Treemap</span>
             <a href="specs/chart6_industry_treemap.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Apprentice Distribution Across Australian Industry Divisions</h3>
+          <p class="chart-sub">Tile area encodes active apprentice population; color saturation encodes trade share (%).</p>
           <div id="vis-chart6" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER National Collection &amp; ANZSIC Industry Divisions.</p>
           <div class="card-caption">
-            <strong>Treemap:</strong> Construction represents the foundation of the vocational system with 116,420 active apprentices and a 93.4% trade share. In contrast, large services sectors like Health Care & Social Assistance (34,890 in-training) rely predominantly on non-trade traineeships (94.6%).
+            Tile area shows apprentice headcount while colour indicates trade share. Construction dominates with 116,420 apprentices and 93.4% in trades, whereas Health Care has 34,890 learners but only 5.4% in trades. Vocational training remains deeply split between traditional trades and non-trade services.
           </div>
         </div>
       </div>
 
-      <div class="chart-grid-2">
+      <!-- Chart 7: Full Width Slopegraph -->
+      <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">07 / SLOPEGRAPH</span>
+            <span class="chart-tag">07 / Slopegraph</span>
             <a href="specs/chart7_shortage_slopegraph.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Top 10 Trade Occupations: The Post-Boom Shift (2021 vs 2025)</h3>
+          <p class="chart-sub">Comparing quarterly commencements during the subsidy peak vs post-subsidy reality.</p>
           <div id="vis-chart7" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER, Apprentices and trainees quarterly collections.</p>
           <div class="card-caption">
-            <strong>Slopegraph:</strong> Quarterly commencements across Australia's top 10 trade vocations highlight how the post-subsidy slowdown affected sectors differently. While Carpenters & Joiners fell 36.7% from 2,970 to 1,880, Electricians proved most resilient (-1.4%), retaining 2,675 quarterly commencements.
+            Between December 2021 and December 2025, commencements fell 36.7% for carpenters (2,970 to 1,880) but only 1.4% for electricians (2,715 to 2,675). Electricians now start the most apprentices of any trade.
           </div>
         </div>
+      </div>
 
+      <!-- Chart 8: Full Width Box Plot -->
+      <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">08 / BOX PLOT</span>
+            <span class="chart-tag">08 / Box Plot</span>
             <a href="specs/chart8_wage_distribution_boxplot.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Apprentice Award Wages vs National Adult Minimum Wage</h3>
+          <p class="chart-sub">Weekly statutory modern award wage progression (Stage 1 to Stage 4) against the national adult minimum.</p>
           <div id="vis-chart8" class="vis-container"></div>
+          <p class="chart-source">Source: Fair Work Commission Modern Award Pay Schedules (2024).</p>
           <div class="card-caption">
-            <strong>Box Plot:</strong> Stage 1 junior award rates across all trade disciplines ($455 to $512/wk) sit hundreds of dollars below the National Adult Minimum Wage ($915.90/wk), representing an acute financial hurdle that drives early apprenticeship cancellations.
+            Award pay for first-year apprentices sits well below the adult minimum wage of $915.90 a week, rising by stage.
           </div>
         </div>
       </div>
@@ -175,47 +207,57 @@
     <!-- SECTION 4: DEMOGRAPHICS & THE COMPLETION GAP -->
     <section class="story-section">
       <div class="section-header">
-        <span class="section-badge">Section 4: Diversity & Retention</span>
-        <h2>4. Diversity, Demographics & The Completion Crisis</h2>
+        <span class="section-badge">Section 4: Diversity &amp; Retention</span>
+        <h2>4. Diversity, Demographics &amp; The Completion Crisis</h2>
         <p>
           Who undertakes apprenticeships today, and who succeeds? The demographic profile is undergoing a generational shift, but completion rates in critical trades remain stubbornly low.
         </p>
       </div>
 
+      <!-- Charts 9 & 10: Side by Side -->
       <div class="chart-grid-2">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">09 / CLEVELAND DUMBBELL PLOT</span>
+            <span class="chart-tag">09 / Cleveland Dumbbell Plot</span>
             <a href="specs/chart9_female_participation_dumbbell.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">The Vocational Gender Divide: Female vs Male Share Across Disciplines</h3>
+          <p class="chart-sub">Gender distribution across active vocational contracts in South Australia.</p>
           <div id="vis-chart9" class="vis-container"></div>
+          <p class="chart-source">Source: SA Skills Commission (October 2024).</p>
           <div class="card-caption">
-            <strong>Cleveland Dumbbell Plot:</strong> South Australian Skills Commission microdata (October 2024) reveals stark vocational gender segregation. While Child Care (96.3% female) and Hairdressing (96.5% female) are predominantly female, core infrastructure trades like Plumbing (1.8%), Carpentry (2.1%), and Electrotechnology (5.5%) remain overwhelmingly male.
+            In South Australia’s apprenticeship contracts, gender splits are stark: 1.8% of plumbing and 5.5% of electrician learners are women, but 96.3% of child care aides. Source: SA Skills Commission, October 2024.
           </div>
         </div>
 
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">10 / STREAMGRAPH</span>
+            <span class="chart-tag">10 / Streamgraph</span>
             <a href="specs/chart10_age_cohort_streamgraph.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">The Aging Apprentice: Demographic Transformation (2014–2024)</h3>
+          <p class="chart-sub">Evolution of intake shares across youth, young adult, and mature adult cohorts over a decade.</p>
           <div id="vis-chart10" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER, Historical Apprentice Demographics.</p>
           <div class="card-caption">
-            <strong>Streamgraph:</strong> Traditional teenage school leavers (under 19) have dropped from 38.4% of total intake in 2014 to 29.2% in 2024. Conversely, adult apprentices (aged 25+) now represent 36.2% of all learners, transforming training delivery requirements.
+            Colours trace each age group’s share of apprentice commencements over a decade. Teenagers under 19 shrank from 38.4% in 2014 to 29.2% in 2024, while adults aged 25 and over rose to 36.2%. Apprenticeships are increasingly taken up by mature workers retraining mid-career.
           </div>
         </div>
       </div>
 
-      <!-- Chart 11: Matrix Heatmap -->
+      <!-- Chart 11: Full Width Matrix Heatmap -->
       <div class="chart-grid-1">
         <div class="vis-card">
           <div class="chart-top-bar">
-            <span class="chart-tag">11 / MATRIX HEATMAP</span>
+            <span class="chart-tag">11 / Matrix Heatmap</span>
             <a href="specs/chart11_completion_matrix_heatmap.vg.json" target="_blank" class="spec-link">Specification ↗</a>
           </div>
+          <h3 class="chart-title">Completion Rates Across Sectors and Qualification Levels</h3>
+          <p class="chart-sub">Cohort completion percentages by Australian Qualification Framework (AQF) level and vocational sector.</p>
           <div id="vis-chart11" class="vis-container"></div>
+          <p class="chart-source">Source: NCVER Completion and Attrition Matrix.</p>
           <div class="card-caption">
-            <strong>Matrix Heatmap:</strong> Completion rates differ widely by qualification level and trade discipline. Commercial Cookery (43.8%) and Automotive (51.4%) suffer from severe attrition at the Certificate III trade level, whereas Certificate IV Electrotechnology achieves strong retention (68.9%).
+            Completion rises with qualification level in every sector. Commercial cookery is lowest (43.8% at Certificate III) and Electrotechnology highest among trades (63.4% at Certificate III).
           </div>
         </div>
       </div>
@@ -223,7 +265,7 @@
 
     <!-- Footer & References -->
     <footer class="project-footer">
-      <h3>Data Sources, Authorship & Academic Acknowledgements</h3>
+      <h3>Data Sources, Authorship &amp; Academic Acknowledgements</h3>
       <p>
         This data visualisation project was created by <strong>Ho Jia Jun</strong> (Student ID: 34676406) for Monash University FIT3179. 
         Visualisations combine public Australian data releases and statutory determinations from official government bodies:
@@ -231,11 +273,11 @@
       <ul style="margin-left: 20px; margin-bottom: 16px; line-height: 1.8;">
         <li>
           <strong>NCVER (National Centre for Vocational Education Research):</strong> 
-          <a href="https://www.ncver.edu.au/research-and-statistics/collection/apprentices-and-trainees" target="_blank" rel="noopener">Apprentices and Trainees Collection No. 120 (March Quarter 2024 benchmarks & historical time series)</a>, reporting national and jurisdictional in-training and completion totals.
+          <a href="https://www.ncver.edu.au/research-and-statistics/collection/apprentices-and-trainees" target="_blank" rel="noopener">Apprentices and Trainees Collection No. 120 (December Quarter 2025 benchmarks &amp; historical time series)</a>, reporting national and jurisdictional in-training and completion totals.
         </li>
         <li>
           <strong>Australian Bureau of Statistics (ABS):</strong> 
-          <a href="https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia" target="_blank" rel="noopener">Labour Force, Australia (Catalogue 6202.0, Table 010 / Table 12: Employed persons by State and Territory)</a>.
+          <a href="https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia" target="_blank" rel="noopener">Labour Force, Australia (Catalogue 6202.0, Table 12: Employed persons by State and Territory)</a>.
         </li>
         <li>
           <strong>State Government Open Data (South Australia):</strong>
@@ -243,11 +285,11 @@
         </li>
         <li>
           <strong>Jobs and Skills Australia (JSA):</strong> 
-          <a href="https://www.jobsandskills.gov.au/data/skills-shortage-analysis" target="_blank" rel="noopener">Skills Priority List (SPL 2021–2024)</a> & Occupational Shortage Determinations.
+          <a href="https://www.jobsandskills.gov.au/data/skills-shortage-analysis" target="_blank" rel="noopener">Skills Priority List (SPL 2021–2024)</a> &amp; Occupational Shortage Determinations.
         </li>
         <li>
           <strong>Fair Work Commission:</strong> 
-          <a href="https://www.fwc.gov.au/agreements-awards/awards/annual-wage-reviews" target="_blank" rel="noopener">Annual Wage Review 2024 ($915.90/week baseline) & Modern Award Pay Schedules</a> (MA000020 Building, MA000025 Electrical, MA000010 Manufacturing).
+          <a href="https://www.fwc.gov.au/agreements-awards/awards/annual-wage-reviews" target="_blank" rel="noopener">Annual Wage Review 2024 ($915.90/week baseline) &amp; Modern Award Pay Schedules</a> (MA000020 Building, MA000025 Electrical, MA000010 Manufacturing).
         </li>
       </ul>
       <p style="margin-top: 14px; font-size: 0.82rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 12px;">
@@ -261,4 +303,3 @@
   <script src="js/main.js"></script>
 </body>
 </html>
-

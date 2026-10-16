@@ -29,7 +29,7 @@ body {
 }
 
 .page-wrapper {
-  max-width: 1180px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 32px 24px;
 }
@@ -181,18 +181,42 @@ header.hero-banner p.lead-subtitle {
   color: var(--accent-hover);
 }
 
-.vis-card .card-caption {
-  font-size: 0.875rem;
+.chart-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 4px 0 4px;
+  color: var(--text-primary);
+}
+
+.chart-sub {
+  font-size: .92rem;
   color: var(--text-secondary);
+  max-width: 62ch;
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+
+.chart-source {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.vis-card .card-caption {
+  font-size: .95rem;
+  color: var(--text-secondary);
+  max-width: 70ch;
   margin-top: 16px;
   border-top: 1px solid #f1f5f9;
   padding-top: 12px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .vis-container {
   width: 100%;
-  min-height: 500px;
+  min-height: 0;
   position: relative;
 }
 

@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Apprenticeship Training Density Across Australian States & Territories",
-    "subtitle": "Active apprentices & trainees per 1,000 employed workforce members (2021–2025). Sources: NCVER & ABS Labour Force",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
-  "height": 450,
+  "height": 500,
+  "autosize": {"type": "fit", "contains": "padding"},
   "params": [
     {
       "name": "Year_Select",
@@ -19,14 +12,16 @@
         "min": 2021,
         "max": 2025,
         "step": 1,
-        "name": "Select Year: "
+        "name": "Year (June quarter): "
       }
     }
   ],
   "projection": {
-    "type": "equirectangular",
-    "center": [133.5, -28],
-    "scale": 600
+    "type": "albers",
+    "rotate": [-134, 0],
+    "parallels": [-18, -36],
+    "center": [0, -27],
+    "scale": 700
   },
   "layer": [
     {
@@ -68,9 +63,9 @@
             "scheme": "blues"
           },
           "legend": {
-            "orient": "bottom-right",
+            "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 160
+            "gradientLength": 180
           }
         },
         "tooltip": [
@@ -80,31 +75,15 @@
           {"field": "Workforce_Thousands", "type": "quantitative", "format": ",", "title": "Employed Workforce ('000s)"}
         ]
       }
-    },
-    {
-      "data": {
-        "values": [
-          {"lon": 144.5, "lat": -22.5, "text": "Queensland: 29.2 apprentices / 1,000 workers"},
-          {"lon": 122.0, "lat": -26.0, "text": "Western Australia: Heavy trade & resources focus"}
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "fontSize": 11,
-        "fontWeight": 600,
-        "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#0f172a",
-        "opacity": 0.85
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "text", "type": "nominal"}
-      }
     }
   ],
   "config": {
-    "background": "#ffffff",
-    "view": {"stroke": null}
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
+             "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

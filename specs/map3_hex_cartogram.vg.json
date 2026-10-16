@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Equal-Area Cartogram: Post-Subsidy Contraction (2021 vs 2025)",
-    "subtitle": "Percentage change in quarterly commencements following wage subsidy expiry. Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
-  "height": 450,
+  "height": 500,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/australia_hex_cartogram.csv"
   },
@@ -47,9 +40,9 @@
             "reverse": true
           },
           "legend": {
-            "orient": "bottom-right",
+            "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 150
+            "gradientLength": 160
           }
         },
         "tooltip": [
@@ -94,8 +87,7 @@
     {
       "data": {
         "values": [
-          {"col": 1.1, "row": 1.6, "text": "NT: Lowest post-subsidy drop (-11.0%)"},
-          {"col": 1.0, "row": 5.8, "text": "Equal-area geometry balances small jurisdictions"}
+          {"col": 1.1, "row": 1.6, "text": "NT: Lowest post-subsidy drop (-11.0%)"}
         ]
       },
       "mark": {
@@ -113,7 +105,12 @@
     }
   ],
   "config": {
-    "background": "#ffffff",
-    "view": {"stroke": null}
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
+             "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

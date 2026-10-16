@@ -1,21 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Apprenticeship Trajectory: Commencements vs Completions (2016–2025)",
-    "subtitle": "Connected scatterplot tracking quarterly vocational throughput across policy eras. Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
   "height": 420,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/ncver_timeseries_2000_2024.csv"
   },
   "transform": [
     {
-      "calculate": "datum.Year <= 2019 ? 'Pre-Pandemic Baseline (2016-19)' : (datum.Year <= 2022 ? 'COVID Wage Subsidy Boom (2020-22)' : 'Post-Subsidy Contraction (2023-25)')",
+      "calculate": "datum.Year <= 2019 ? 'Before COVID (2016–19)' : (datum.Year <= 2022 ? 'Wage subsidy (2020–22)' : 'After the subsidy (2023–25)')",
       "as": "Policy_Era"
     }
   ],
@@ -46,18 +39,16 @@
           "type": "nominal",
           "scale": {
             "domain": [
-              "Pre-Pandemic Baseline (2016-19)",
-              "COVID Wage Subsidy Boom (2020-22)",
-              "Post-Subsidy Contraction (2023-25)"
+              "Before COVID (2016–19)",
+              "Wage subsidy (2020–22)",
+              "After the subsidy (2023–25)"
             ],
             "range": ["#64748b", "#0284c7", "#ef4444"]
           },
           "legend": {
             "title": "Policy Era",
             "orient": "bottom",
-            "direction": "horizontal",
-            "titleFontSize": 11,
-            "labelFontSize": 10
+            "direction": "horizontal"
           }
         }
       }
@@ -85,25 +76,17 @@
       "data": {
         "values": [
           {
-            "commence": 71705,
-            "comp": 22495,
-            "text": "2020-Q4: BAC Subsidy Peak (71.7k)",
-            "align": "right",
-            "dx": -10,
-            "dy": -10
-          },
-          {
-            "commence": 22295,
-            "comp": 14825,
-            "text": "2020-Q2: Lockdown Trough",
-            "align": "left",
-            "dx": 8,
-            "dy": -8
+            "commence": 99410,
+            "comp": 22875,
+            "text": "2022-Q1: 99,410 commencements"
           }
         ]
       },
       "mark": {
         "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": -8,
         "fontSize": 11,
         "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif",
@@ -112,19 +95,43 @@
       "encoding": {
         "x": {"field": "commence", "type": "quantitative"},
         "y": {"field": "comp", "type": "quantitative"},
-        "text": {"field": "text", "type": "nominal"},
-        "align": {"field": "align", "type": "nominal"},
-        "dx": {"field": "dx", "type": "quantitative"},
-        "dy": {"field": "dy", "type": "quantitative"}
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "commence": 22295,
+            "comp": 14825,
+            "text": "2020-Q2: lockdown trough"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f172a"
+      },
+      "encoding": {
+        "x": {"field": "commence", "type": "quantitative"},
+        "y": {"field": "comp", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
       }
     }
   ],
   "config": {
-    "background": "#ffffff",
-    "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "gridColor": "#f1f5f9"
-    }
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
+             "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

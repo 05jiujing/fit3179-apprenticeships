@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Quarterly Pipeline Momentum: Net Intake vs Loss (2016–2025)",
-    "subtitle": "Diverging area showing net pipeline change (Commencements minus Exits). Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
   "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/ncver_timeseries_2000_2024.csv"
   },
@@ -60,8 +53,7 @@
     {
       "data": {
         "values": [
-          {"period": "2020-Q4", "val": 28810, "text": "2020-Q4: +28.8k Subsidy Boom Peak"},
-          {"period": "2025-Q4", "val": -19820, "text": "2025-Q4: -19.8k Post-Subsidy Deficit"}
+          {"period": "2022-Q1", "val": 43945, "text": "2022-Q1: +43,945"}
         ]
       },
       "mark": {
@@ -70,7 +62,31 @@
         "fontWeight": 700,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#0f172a",
+        "align": "right",
+        "dx": -8,
         "dy": -10
+      },
+      "encoding": {
+        "x": {"field": "period", "type": "nominal"},
+        "y": {"field": "val", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"period": "2022-Q4", "val": -30870, "text": "2022-Q4: −30,870"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f172a",
+        "align": "left",
+        "dx": 8,
+        "dy": 10
       },
       "encoding": {
         "x": {"field": "period", "type": "nominal"},
@@ -80,11 +96,12 @@
     }
   ],
   "config": {
-    "background": "#ffffff",
-    "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "gridColor": "#f1f5f9"
-    }
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
+             "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

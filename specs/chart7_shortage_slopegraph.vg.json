@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Top 10 Trade Occupations: The Post-Boom Shift (2021 vs 2025)",
-    "subtitle": "Slopegraph comparing quarterly commencements during the subsidy peak vs post-subsidy reality. Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
-  "height": 420,
+  "height": 450,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/ncver_top10_trades.csv"
   },
@@ -19,8 +12,12 @@
       "as": ["Year_Key", "Commencements"]
     },
     {
-      "calculate": "datum.Year_Key == 'Commencements_2021' ? '2021 (Subsidy Peak)' : '2025 (Post-Subsidy)'",
+      "calculate": "datum.Year_Key == 'Commencements_2021' ? '2021' : '2025'",
       "as": "Year_Label"
+    },
+    {
+      "calculate": "datum.Occupation == '3411 - Electricians' ? 'Electricians' : (datum.Occupation == '3312 - Carpenters and Joiners' ? 'Carpenters' : 'Other')",
+      "as": "Highlight"
     },
     {
       "calculate": "split(datum.Occupation, ' - ')[1]",
@@ -31,15 +28,19 @@
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 2.4,
-        "opacity": 0.8
+        "interpolate": "linear"
       },
       "encoding": {
         "x": {
           "field": "Year_Label",
           "type": "nominal",
           "title": null,
-          "scale": {"padding": 0.35}
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "labelFontWeight": 600
+          },
+          "scale": {"padding": 0.25}
         },
         "y": {
           "field": "Commencements",
@@ -49,25 +50,48 @@
         },
         "detail": {"field": "Occupation"},
         "color": {
-          "field": "Short_Title",
+          "field": "Highlight",
           "type": "nominal",
-          "scale": {"scheme": "tableau10"},
-          "legend": {
-            "title": "Trade Discipline",
-            "orient": "bottom",
-            "columns": 2,
-            "labelFontSize": 10,
-            "titleFontSize": 11
-          }
+          "scale": {
+            "domain": ["Carpenters", "Electricians", "Other"],
+            "range": ["#e11d48", "#0284c7", "#94a3b8"]
+          },
+          "legend": null
+        },
+        "strokeWidth": {
+          "field": "Highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Carpenters", "Electricians", "Other"],
+            "range": [3.2, 3.2, 1.6]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "field": "Highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Carpenters", "Electricians", "Other"],
+            "range": [1, 1, 0.55]
+          },
+          "legend": null
         }
       }
     },
     {
-      "mark": {"type": "circle", "size": 65, "opacity": 0.95},
+      "mark": {"type": "circle", "size": 75, "opacity": 0.95},
       "encoding": {
         "x": {"field": "Year_Label", "type": "nominal"},
         "y": {"field": "Commencements", "type": "quantitative"},
-        "color": {"field": "Short_Title", "type": "nominal"},
+        "color": {
+          "field": "Highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Carpenters", "Electricians", "Other"],
+            "range": ["#e11d48", "#0284c7", "#94a3b8"]
+          },
+          "legend": null
+        },
         "tooltip": [
           {"field": "Occupation", "type": "nominal", "title": "Occupation"},
           {"field": "Year_Label", "type": "nominal", "title": "Period"},
@@ -77,10 +101,36 @@
       }
     },
     {
+      "transform": [
+        {"filter": "datum.Year_Key == 'Commencements_2025'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "fontSize": 11,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "x": {"field": "Year_Label", "type": "nominal"},
+        "y": {"field": "Commencements", "type": "quantitative"},
+        "text": {"field": "Short_Title", "type": "nominal"},
+        "color": {
+          "field": "Highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Carpenters", "Electricians", "Other"],
+            "range": ["#e11d48", "#0284c7", "#64748b"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
       "data": {
         "values": [
-          {"year": "2021 (Subsidy Peak)", "val": 2970, "text": "Carpenters Peak: 2,970"},
-          {"year": "2025 (Post-Subsidy)", "val": 2675, "text": "Electricians Lead: 2,675"}
+          {"year": "2021", "val": 2970, "text": "Carpenters Peak: 2,970"},
+          {"year": "2025", "val": 2675, "text": "Electricians Lead: 2,675"}
         ]
       },
       "mark": {
@@ -99,11 +149,23 @@
     }
   ],
   "config": {
-    "background": "#ffffff",
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
     "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "gridColor": "#f1f5f9"
-    }
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

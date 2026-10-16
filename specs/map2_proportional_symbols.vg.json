@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Metropolitan vs Regional Apprenticeship Training Centers",
-    "subtitle": "Active apprentice volumes and trade focus across 28 official NCVER training hubs (2024). Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
-  "height": 450,
+  "height": 500,
+  "autosize": {"type": "fit", "contains": "padding"},
   "params": [
     {
       "name": "Remoteness_Filter",
@@ -25,7 +18,7 @@
   "projection": {
     "type": "equirectangular",
     "center": [134, -28],
-    "scale": 620
+    "scale": 650
   },
   "layer": [
     {
@@ -61,15 +54,15 @@
         "size": {
           "field": "Active_Apprentices",
           "type": "quantitative",
-          "title": "Active Apprentices",
+          "title": "Active Learners",
           "scale": {
             "type": "sqrt",
             "domain": [800, 65000],
             "range": [35, 750]
           },
           "legend": {
-            "orient": "bottom-right",
-            "title": "Active Learners",
+            "orient": "bottom",
+            "direction": "horizontal",
             "values": [10000, 50000],
             "format": ",d",
             "symbolFillColor": "#fdba74"
@@ -85,9 +78,9 @@
             "scheme": "oranges"
           },
           "legend": {
-            "orient": "bottom-left",
+            "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 130
+            "gradientLength": 140
           }
         },
         "tooltip": [
@@ -103,17 +96,38 @@
     {
       "data": {
         "values": [
-          {"lon": 121.5, "lat": -21.5, "text": "Pilbara: 88.4% Trade Focus"},
-          {"lon": 141.0, "lat": -21.0, "text": "Mackay: 84.2% Industrial Mechanical"}
+          {"lon": 118.5, "lat": -21.0, "text": "Pilbara: 88.4% Trade Focus"}
         ]
       },
       "mark": {
         "type": "text",
+        "align": "left",
+        "dx": 10,
         "fontSize": 11,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#9a3412",
-        "align": "left"
+        "fill": "#9a3412"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"lon": 149.1, "lat": -21.1, "text": "Mackay: 84.2% Industrial Mechanical"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#9a3412"
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
@@ -123,7 +137,12 @@
     }
   ],
   "config": {
-    "background": "#ffffff",
-    "view": {"stroke": null}
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
+             "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
+    "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

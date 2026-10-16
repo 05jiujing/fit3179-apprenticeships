@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "The Aging Apprentice: Demographic Transformation (2014–2024)",
-    "subtitle": "Streamgraph illustrating the shift from teenage school leavers to adult apprentices (25+). Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
-  "height": 400,
+  "height": 420,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/age_cohort_timeseries.csv"
   },
@@ -48,9 +41,7 @@
           "legend": {
             "title": "Age Demographic",
             "orient": "bottom",
-            "direction": "horizontal",
-            "labelFontSize": 10,
-            "titleFontSize": 11
+            "direction": "horizontal"
           }
         },
         "tooltip": [
@@ -63,29 +54,62 @@
     {
       "data": {
         "values": [
-          {"year": "2014", "y_pos": 45, "text": "2014: Youth Leavers 38.4%"},
-          {"year": "2024", "y_pos": 45, "text": "2024: Adult Learners 36.2%"}
+          {"year": "2014", "y_pos": 42, "text": "2014: Youth Leavers 38.4%"}
         ]
       },
       "mark": {
         "type": "text",
+        "align": "left",
+        "dx": 8,
         "fontSize": 11,
         "fontWeight": 700,
-        "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#0f172a"
       },
       "encoding": {
         "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "y_pos", "type": "quantitative", "axis": null},
+        "y": {"field": "y_pos", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": "2024", "y_pos": 42, "text": "2024: Adult Learners 36.2%"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#0f172a"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "y_pos", "type": "quantitative"},
         "text": {"field": "text", "type": "nominal"}
       }
     }
   ],
   "config": {
-    "background": "#ffffff",
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
     "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif"
-    }
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

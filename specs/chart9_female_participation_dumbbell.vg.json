@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "The Vocational Gender Divide: Female vs Male Share Across Disciplines",
-    "subtitle": "Cleveland dumbbell plot tracking gender disparity across active vocational vocations. Source: SA Skills Commission (2024)",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
   "height": 420,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/sa_vocation_gender_breakdown.csv"
   },
@@ -26,7 +19,7 @@
           "type": "nominal",
           "title": "Vocational Discipline",
           "sort": {"field": "Female_Share_Pct", "order": "ascending"},
-          "axis": {"labelFontSize": 10}
+          "axis": {"labelFontSize": 10.5}
         },
         "x": {
           "field": "Female_Share_Pct",
@@ -85,16 +78,37 @@
     {
       "data": {
         "values": [
-          {"vocation": "Plumbing And/Or Gasfitting", "x": 10.0, "text": "Plumbing: 1.8% Female"},
-          {"vocation": "Child Care Aide", "x": 80.0, "text": "Child Care: 96.3% Female"}
+          {"vocation": "Plumbing And/Or Gasfitting", "x": 1.8, "text": "Plumbing: 1.8% female"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 10.5,
+        "dx": 8,
+        "dy": -10,
+        "fontSize": 11,
         "fontWeight": 700,
-        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#0f766e"
+      },
+      "encoding": {
+        "y": {"field": "vocation", "type": "nominal"},
+        "x": {"field": "x", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"vocation": "Child Care Aide", "x": 96.3, "text": "Child Care Aide: 96.3% female"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": -10,
+        "fontSize": 11,
+        "fontWeight": 700,
         "fill": "#0f766e"
       },
       "encoding": {
@@ -105,11 +119,23 @@
     }
   ],
   "config": {
-    "background": "#ffffff",
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
     "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "gridColor": "#f1f5f9"
-    }
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "Apprentice Award Wages vs National Adult Minimum Wage",
-    "subtitle": "Weekly statutory modern award wage progression (Stage 1 to Stage 4). Source: Fair Work Commission (2024)",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
   "height": 420,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/apprentice_wage_distributions.csv"
   },
@@ -29,7 +22,7 @@
           "title": "Trade & Traineeship Award Sector",
           "axis": {
             "labelAngle": -25,
-            "labelFontSize": 10
+            "labelFontSize": 11
           }
         },
         "y": {
@@ -60,30 +53,43 @@
     {
       "data": {
         "values": [
-          {"sector": "Automotive Mechanical", "wage": 945, "text": "Adult Minimum Wage ($915.90/wk)"}
+          {"sector": "Care & Community Traineeship", "text": "Adult Minimum Wage ($915.90/wk)"}
         ]
       },
       "mark": {
         "type": "text",
-        "align": "left",
+        "align": "right",
+        "dx": 60,
+        "dy": -8,
         "fontSize": 11,
         "fontWeight": 700,
-        "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#dc2626"
       },
       "encoding": {
         "x": {"field": "sector", "type": "nominal"},
-        "y": {"field": "wage", "type": "quantitative"},
+        "y": {"datum": 915.9},
         "text": {"field": "text", "type": "nominal"}
       }
     }
   ],
   "config": {
-    "background": "#ffffff",
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
     "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "gridColor": "#f1f5f9"
-    }
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

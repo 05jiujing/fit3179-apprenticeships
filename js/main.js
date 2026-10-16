@@ -22,20 +22,22 @@ const specs = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  specs.forEach(spec => {
-    vegaEmbed(spec.id, spec.path, embedOptions)
-      .then(result => {
-        // Embed successful
-      })
-      .catch(err => {
-        console.error(`Error embedding ${spec.path}:`, err);
-        const container = document.querySelector(spec.id);
-        if (container) {
-          container.innerHTML = `<div style="padding:20px; color:#ef4444; background:#fef2f2; border-radius:8px;">
-            Failed to render chart: ${spec.path}. Check console for details.
-          </div>`;
-        }
-      });
+  document.fonts.ready.then(() => {
+    specs.forEach(spec => {
+      vegaEmbed(spec.id, spec.path, embedOptions)
+        .then(result => {
+          // Embed successful
+        })
+        .catch(err => {
+          console.error(`Error embedding ${spec.path}:`, err);
+          const container = document.querySelector(spec.id);
+          if (container) {
+            container.innerHTML = `<div style="padding:20px; color:#ef4444; background:#fef2f2; border-radius:8px;">
+              Failed to render chart: ${spec.path}. Check console for details.
+            </div>`;
+          }
+        });
+    });
   });
 });
 

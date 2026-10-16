@@ -1,15 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
-    "text": "The Completion Gauntlet: Success Rates Across Sectors and Qualification Levels",
-    "subtitle": "Cohort completion percentages by Australian Qualification Framework (AQF) level. Source: NCVER",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
-    "anchor": "start",
-    "font": "Plus Jakarta Sans, sans-serif"
-  },
   "width": "container",
-  "height": 320,
+  "height": 340,
+  "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/completion_matrix_data.csv"
   },
@@ -26,7 +19,7 @@
           "type": "nominal",
           "title": "Vocational Discipline",
           "axis": {
-            "labelAngle": -25,
+            "labelAngle": -35,
             "labelFontSize": 11,
             "titleFontSize": 12
           }
@@ -91,11 +84,23 @@
     }
   ],
   "config": {
-    "background": "#ffffff",
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
     "axis": {
-      "labelFont": "Plus Jakarta Sans, sans-serif",
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "grid": false
-    }
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans"}
   }
 }

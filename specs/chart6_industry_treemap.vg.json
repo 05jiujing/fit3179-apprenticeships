@@ -1,18 +1,21 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "description": "Treemap of Australian Apprenticeships by Industry Division (ANZSIC)",
-  "width": 850,
-  "height": 450,
+  "height": 500,
   "padding": 5,
-  "autosize": "fit",
-  "title": {
-    "text": "Apprentice Distribution Across Australian Industry Divisions (2024)",
-    "subtitle": "Tile area encodes total active apprentice population; color saturation encodes Trade Share (%). Source: NCVER",
-    "fontSize": 16,
-    "subtitleFontSize": 12,
-    "font": "Plus Jakarta Sans, sans-serif",
-    "anchor": "start"
-  },
+  "autosize": {"type": "fit", "contains": "padding"},
+  "signals": [
+    {
+      "name": "width",
+      "init": "isFinite(containerSize()[0]) && containerSize()[0] > 0 ? containerSize()[0] : 1100",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "isFinite(containerSize()[0]) && containerSize()[0] > 0 ? containerSize()[0] : 1100"
+        }
+      ]
+    }
+  ],
   "data": [
     {
       "name": "root_node",
@@ -103,9 +106,9 @@
       "interactive": false,
       "encode": {
         "enter": {
-          "font": {"value": "Plus Jakarta Sans, sans-serif"},
+          "font": {"value": "Plus Jakarta Sans"},
           "fontSize": {"value": 11},
-          "fontWeight": {"value": 700},
+          "fontWeight": {"value": 600},
           "fill": [
             {"test": "datum.Trade_Share_Pct > 50", "value": "#ffffff"},
             {"value": "#0f172a"}
@@ -117,11 +120,12 @@
           "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
           "y": {"signal": "0.5 * (datum.y0 + datum.y1)"},
           "text": [
-            {"test": "(datum.x1 - datum.x0) > 120 && (datum.y1 - datum.y0) > 45", "field": "Industry_Name"},
+            {"test": "(datum.x1 - datum.x0) > 65 && (datum.y1 - datum.y0) > 30", "field": "Industry_Name"},
             {"value": ""}
           ],
+          "limit": {"signal": "max(20, (datum.x1 - datum.x0) - 10)"},
           "fillOpacity": [
-            {"test": "(datum.x1 - datum.x0) > 120 && (datum.y1 - datum.y0) > 45", "value": 1},
+            {"test": "(datum.x1 - datum.x0) > 65 && (datum.y1 - datum.y0) > 30", "value": 1},
             {"value": 0}
           ]
         }
@@ -132,11 +136,29 @@
     {
       "fill": "color",
       "title": "Trade Share (%)",
-      "orient": "bottom-right",
+      "orient": "bottom",
       "direction": "horizontal",
-      "gradientLength": 140,
-      "titleFont": "Plus Jakarta Sans, sans-serif",
-      "labelFont": "Plus Jakarta Sans, sans-serif"
+      "gradientLength": 200
     }
-  ]
+  ],
+  "config": {
+    "font": "Plus Jakarta Sans",
+    "background": "transparent",
+    "view": {"stroke": null},
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans"}
+  }
 }
