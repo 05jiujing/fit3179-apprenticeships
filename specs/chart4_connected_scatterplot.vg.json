@@ -25,13 +25,13 @@
           "field": "Commencements",
           "type": "quantitative",
           "title": "Quarterly Commencements (New Enrolments)",
-          "scale": {"zero": false}
+          "scale": {"zero": true}
         },
         "y": {
           "field": "Completions",
           "type": "quantitative",
           "title": "Quarterly Completions (Graduates)",
-          "scale": {"zero": false}
+          "scale": {"zero": true}
         },
         "order": {"field": "Period"},
         "color": {

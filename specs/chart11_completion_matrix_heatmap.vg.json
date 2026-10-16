@@ -40,13 +40,13 @@
           "title": "Completion Rate (%)",
           "scale": {
             "type": "linear",
-            "domain": [40, 76],
-            "scheme": "redyellowgreen"
+            "domain": [0, 100],
+            "scheme": "blues"
           },
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
-            "gradientLength": 180,
+            "gradientLength": 200,
             "titleFontSize": 11,
             "labelFontSize": 10
           }
@@ -75,10 +75,10 @@
         "text": {"field": "Cohort_Completion_Rate_Pct", "type": "quantitative", "format": ".1f"},
         "color": {
           "condition": {
-            "test": "datum.Cohort_Completion_Rate_Pct < 48 || datum.Cohort_Completion_Rate_Pct > 68",
-            "value": "#0f172a"
+            "test": "datum.Cohort_Completion_Rate_Pct > 55",
+            "value": "#ffffff"
           },
-          "value": "#1e293b"
+          "value": "#0f172a"
         }
       }
     }

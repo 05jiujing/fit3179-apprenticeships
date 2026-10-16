@@ -59,7 +59,8 @@
           "title": "Per 1,000 Workers",
           "scale": {
             "type": "linear",
-            "domain": [18, 38],
+            "zero": true,
+            "domain": [0, 50],
             "scheme": "blues"
           },
           "legend": {

@@ -29,7 +29,7 @@
           "field": "Weekly_Award_Wage_AUD",
           "type": "quantitative",
           "title": "Weekly Award Wage (AUD)",
-          "scale": {"domain": [400, 1150]}
+          "scale": {"zero": true, "domain": [0, 1150]}
         },
         "tooltip": [
           {"field": "Sector", "type": "nominal", "title": "Award Sector"},

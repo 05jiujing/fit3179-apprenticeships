@@ -57,8 +57,9 @@
           "title": "Active Learners",
           "scale": {
             "type": "sqrt",
-            "domain": [800, 65000],
-            "range": [35, 750]
+            "zero": true,
+            "domain": [0, 65000],
+            "range": [20, 750]
           },
           "legend": {
             "orient": "bottom",
@@ -74,7 +75,8 @@
           "title": "Trade Share (%)",
           "scale": {
             "type": "linear",
-            "domain": [60, 90],
+            "zero": true,
+            "domain": [0, 100],
             "scheme": "oranges"
           },
           "legend": {

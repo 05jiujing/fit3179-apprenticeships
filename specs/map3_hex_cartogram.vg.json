@@ -35,7 +35,8 @@
           "title": "Change 2021–25 (%)",
           "scale": {
             "type": "linear",
-            "domain": [-60, -10],
+            "zero": true,
+            "domain": [-60, 0],
             "scheme": "reds",
             "reverse": true
           },
