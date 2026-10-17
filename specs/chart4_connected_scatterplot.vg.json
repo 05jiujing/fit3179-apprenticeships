@@ -8,7 +8,7 @@
   },
   "transform": [
     {
-      "calculate": "datum.Year <= 2019 ? 'Before COVID (2016–19)' : (datum.Year <= 2022 ? 'Wage subsidy (2020–22)' : 'After the subsidy (2023–25)')",
+      "calculate": "datum.Year <= 2019 ? '2016–19' : (datum.Year <= 2022 ? '2020–22' : '2023–25')",
       "as": "Policy_Era"
     }
   ],
@@ -39,9 +39,9 @@
           "type": "nominal",
           "scale": {
             "domain": [
-              "Before COVID (2016–19)",
-              "Wage subsidy (2020–22)",
-              "After the subsidy (2023–25)"
+              "2016–19",
+              "2020–22",
+              "2023–25"
             ],
             "range": ["#64748b", "#0284c7", "#ef4444"]
           },
@@ -78,7 +78,7 @@
           {
             "commence": 99410,
             "comp": 22875,
-            "text": "2022-Q1: 99,410 commencements"
+            "text": "Peak: 99,410"
           }
         ]
       },
@@ -131,7 +131,28 @@
             "commence": 56295,
             "comp": 26965,
             "text": "Start (2016-Q1)"
-          },
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": 12,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "font": "Plus Jakarta Sans, sans-serif",
+        "fill": "#475569"
+      },
+      "encoding": {
+        "x": {"field": "commence", "type": "quantitative"},
+        "y": {"field": "comp", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
           {
             "commence": 28070,
             "comp": 26340,
@@ -141,9 +162,9 @@
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 8,
-        "dy": 12,
+        "align": "right",
+        "dx": -8,
+        "dy": -12,
         "fontSize": 11,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",

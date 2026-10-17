@@ -90,7 +90,7 @@
         "type": "text",
         "align": "left",
         "dx": 8,
-        "dy": -10,
+        "dy": 8,
         "fontSize": 11,
         "fontWeight": 700,
         "fill": "#0f766e"
@@ -110,7 +110,7 @@
         "type": "text",
         "align": "right",
         "dx": -8,
-        "dy": -10,
+        "dy": -8,
         "fontSize": 11,
         "fontWeight": 700,
         "fill": "#0f766e"

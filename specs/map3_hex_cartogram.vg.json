@@ -11,7 +11,7 @@
       "mark": {
         "type": "point",
         "shape": "M 0 -1 L 0.866 -0.5 L 0.866 0.5 L 0 1 L -0.866 0.5 L -0.866 -0.5 Z",
-        "size": 9000,
+        "size": 5500,
         "filled": true,
         "stroke": "#ffffff",
         "strokeWidth": 2.5
@@ -58,11 +58,11 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 15,
+        "fontSize": 14,
         "fontWeight": 800,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#ffffff",
-        "dy": -8
+        "dy": -7
       },
       "encoding": {
         "x": {"field": "Grid_Col", "type": "quantitative"},
@@ -73,38 +73,16 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 12,
+        "fontSize": 11,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#f8fafc",
-        "dy": 12
+        "dy": 10
       },
       "encoding": {
         "x": {"field": "Grid_Col", "type": "quantitative"},
         "y": {"field": "Grid_Row", "type": "quantitative"},
         "text": {"field": "Change_Pct_2021_2025", "type": "quantitative", "format": ".1f"}
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {"col": 2, "row": 2, "text": "NT: Lowest post-subsidy drop (-11.0%)"}
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 40,
-        "dy": -32,
-        "fontSize": 11,
-        "fontWeight": 600,
-        "font": "Plus Jakarta Sans, sans-serif",
-        "fill": "#64748b"
-      },
-      "encoding": {
-        "x": {"field": "col", "type": "quantitative"},
-        "y": {"field": "row", "type": "quantitative"},
-        "text": {"field": "text", "type": "nominal"}
       }
     }
   ],

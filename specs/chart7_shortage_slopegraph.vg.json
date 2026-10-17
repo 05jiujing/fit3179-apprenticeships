@@ -153,14 +153,14 @@
     {
       "data": {
         "values": [
-          {"year": "2025", "val": 1865, "text": "Other trades in grey"}
+          {"year": "2025", "val": 150, "text": "Other trades in grey"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "left",
         "dx": 8,
-        "dy": 16,
+        "dy": 0,
         "fontSize": 11,
         "fontStyle": "italic",
         "fill": "#94a3b8"

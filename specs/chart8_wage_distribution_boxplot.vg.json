@@ -13,7 +13,7 @@
         "extent": "min-max",
         "size": 28,
         "color": "#0284c7",
-        "median": {"color": "#ffffff", "size": 2}
+        "median": {"color": "#ffffff", "size": 28}
       },
       "encoding": {
         "x": {
@@ -53,14 +53,14 @@
     {
       "data": {
         "values": [
-          {"sector": "Care & Community Traineeship", "text": "Adult min. wage $915.90/wk"}
+          {"sector": "Plumbing Services", "text": "Adult min. wage $915.90/wk"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "right",
-        "dx": 0,
-        "dy": -8,
+        "dx": 45,
+        "dy": -10,
         "fontSize": 11,
         "fontWeight": 700,
         "fill": "#dc2626"
