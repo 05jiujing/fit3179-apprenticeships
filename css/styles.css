@@ -214,6 +214,10 @@ header.hero-banner p.lead-subtitle {
   line-height: 1.6;
 }
 
+.chart-grid-1 .vis-card .card-caption {
+  max-width: none;
+}
+
 .vis-container {
   width: 100%;
   min-height: 0;

@@ -11,7 +11,7 @@
       "mark": {
         "type": "point",
         "shape": "M 0 -1 L 0.866 -0.5 L 0.866 0.5 L 0 1 L -0.866 0.5 L -0.866 -0.5 Z",
-        "size": 5200,
+        "size": 9000,
         "filled": true,
         "stroke": "#ffffff",
         "strokeWidth": 2.5
@@ -20,13 +20,13 @@
         "x": {
           "field": "Grid_Col",
           "type": "quantitative",
-          "scale": {"domain": [0.4, 4.6]},
+          "scale": {"domain": [0.5, 4.5]},
           "axis": null
         },
         "y": {
           "field": "Grid_Row",
           "type": "quantitative",
-          "scale": {"domain": [1.2, 6.8], "reverse": true},
+          "scale": {"domain": [1.4, 6.6], "reverse": true},
           "axis": null
         },
         "color": {
@@ -58,11 +58,11 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 14,
+        "fontSize": 15,
         "fontWeight": 800,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#ffffff",
-        "dy": -7
+        "dy": -8
       },
       "encoding": {
         "x": {"field": "Grid_Col", "type": "quantitative"},
@@ -73,11 +73,11 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 12,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
         "fill": "#f8fafc",
-        "dy": 10
+        "dy": 12
       },
       "encoding": {
         "x": {"field": "Grid_Col", "type": "quantitative"},
@@ -88,11 +88,14 @@
     {
       "data": {
         "values": [
-          {"col": 1.1, "row": 1.6, "text": "NT: Lowest post-subsidy drop (-11.0%)"}
+          {"col": 2, "row": 2, "text": "NT: Lowest post-subsidy drop (-11.0%)"}
         ]
       },
       "mark": {
         "type": "text",
+        "align": "left",
+        "dx": 40,
+        "dy": -32,
         "fontSize": 11,
         "fontWeight": 600,
         "font": "Plus Jakarta Sans, sans-serif",
@@ -106,12 +109,23 @@
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
-    "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
-             "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
-    "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
-    "text": {"font": "Plus Jakarta Sans"}
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600,
+      "labelColor": "#475569",
+      "titleColor": "#0f172a",
+      "gridColor": "#e2e8f0",
+      "domainColor": "#cbd5e1"
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

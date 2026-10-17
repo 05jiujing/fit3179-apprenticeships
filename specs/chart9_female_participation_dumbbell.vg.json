@@ -6,6 +6,15 @@
   "data": {
     "url": "data/sa_vocation_gender_breakdown.csv"
   },
+  "encoding": {
+    "y": {
+      "field": "Vocation",
+      "type": "nominal",
+      "title": "Vocational Discipline",
+      "sort": {"field": "Female_Share_Pct", "order": "ascending"},
+      "axis": {"labelFontSize": 10.5}
+    }
+  },
   "layer": [
     {
       "mark": {
@@ -14,13 +23,6 @@
         "strokeWidth": 3
       },
       "encoding": {
-        "y": {
-          "field": "Vocation",
-          "type": "nominal",
-          "title": "Vocational Discipline",
-          "sort": {"field": "Female_Share_Pct", "order": "ascending"},
-          "axis": {"labelFontSize": 10.5}
-        },
         "x": {
           "field": "Female_Share_Pct",
           "type": "quantitative",
@@ -34,16 +36,22 @@
       "mark": {
         "type": "circle",
         "size": 110,
-        "color": "#0284c7",
         "opacity": 0.95
       },
       "encoding": {
-        "y": {
-          "field": "Vocation",
-          "type": "nominal",
-          "sort": {"field": "Female_Share_Pct", "order": "ascending"}
-        },
         "x": {"field": "Male_Share_Pct", "type": "quantitative"},
+        "color": {
+          "datum": "Male",
+          "scale": {
+            "domain": ["Male", "Female"],
+            "range": ["#0284c7", "#0d9488"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top",
+            "direction": "horizontal"
+          }
+        },
         "tooltip": [
           {"field": "Vocation", "type": "nominal", "title": "Vocation"},
           {"field": "Type", "type": "nominal", "title": "Type"},
@@ -56,16 +64,13 @@
       "mark": {
         "type": "circle",
         "size": 110,
-        "color": "#0d9488",
         "opacity": 0.95
       },
       "encoding": {
-        "y": {
-          "field": "Vocation",
-          "type": "nominal",
-          "sort": {"field": "Female_Share_Pct", "order": "ascending"}
-        },
         "x": {"field": "Female_Share_Pct", "type": "quantitative"},
+        "color": {
+          "datum": "Female"
+        },
         "tooltip": [
           {"field": "Vocation", "type": "nominal", "title": "Vocation"},
           {"field": "Type", "type": "nominal", "title": "Type"},
@@ -78,7 +83,7 @@
     {
       "data": {
         "values": [
-          {"vocation": "Plumbing And/Or Gasfitting", "x": 1.8, "text": "Plumbing: 1.8% female"}
+          {"Vocation": "Plumbing And/Or Gasfitting", "x": 1.8, "text": "Plumbing: 1.8% female"}
         ]
       },
       "mark": {
@@ -91,7 +96,6 @@
         "fill": "#0f766e"
       },
       "encoding": {
-        "y": {"field": "vocation", "type": "nominal"},
         "x": {"field": "x", "type": "quantitative"},
         "text": {"field": "text", "type": "nominal"}
       }
@@ -99,7 +103,7 @@
     {
       "data": {
         "values": [
-          {"vocation": "Child Care Aide", "x": 96.3, "text": "Child Care Aide: 96.3% female"}
+          {"Vocation": "Child Care Aide", "x": 96.3, "text": "Child Care Aide: 96.3% female"}
         ]
       },
       "mark": {
@@ -112,14 +116,13 @@
         "fill": "#0f766e"
       },
       "encoding": {
-        "y": {"field": "vocation", "type": "nominal"},
         "x": {"field": "x", "type": "quantitative"},
         "text": {"field": "text", "type": "nominal"}
       }
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
     "axis": {
@@ -136,6 +139,6 @@
       "titleFontSize": 12,
       "titleFontWeight": 600
     },
-    "text": {"font": "Plus Jakarta Sans"}
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

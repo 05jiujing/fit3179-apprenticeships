@@ -53,13 +53,13 @@
     {
       "data": {
         "values": [
-          {"sector": "Care & Community Traineeship", "text": "Adult Minimum Wage ($915.90/wk)"}
+          {"sector": "Care & Community Traineeship", "text": "Adult min. wage $915.90/wk"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "right",
-        "dx": 60,
+        "dx": 0,
         "dy": -8,
         "fontSize": 11,
         "fontWeight": 700,
@@ -73,7 +73,7 @@
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
     "axis": {
@@ -90,6 +90,6 @@
       "titleFontSize": 12,
       "titleFontWeight": 600
     },
-    "text": {"font": "Plus Jakarta Sans"}
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

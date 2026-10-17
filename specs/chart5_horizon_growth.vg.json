@@ -96,12 +96,12 @@
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
     "axis": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600,
              "labelColor": "#475569", "titleColor": "#0f172a", "gridColor": "#e2e8f0", "domainColor": "#cbd5e1"},
     "legend": {"labelFontSize": 12, "titleFontSize": 12, "titleFontWeight": 600},
-    "text": {"font": "Plus Jakarta Sans"}
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

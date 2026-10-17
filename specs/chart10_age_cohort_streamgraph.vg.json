@@ -23,8 +23,9 @@
         "y": {
           "field": "Percentage",
           "type": "quantitative",
-          "stack": "center",
-          "axis": null
+          "stack": "zero",
+          "title": "Share of Commencements (%)",
+          "axis": {"format": "d"}
         },
         "color": {
           "field": "Age_Group",
@@ -54,13 +55,13 @@
     {
       "data": {
         "values": [
-          {"year": "2014", "y_pos": 42, "text": "2014: Youth Leavers 38.4%"}
+          {"year": "2014", "y_pos": 18, "text": "2014: Youth Leavers 38.4%"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 8,
+        "dx": 6,
         "fontSize": 11,
         "fontWeight": 700,
         "fill": "#0f172a"
@@ -74,13 +75,13 @@
     {
       "data": {
         "values": [
-          {"year": "2024", "y_pos": 42, "text": "2024: Adult Learners 36.2%"}
+          {"year": "2024", "y_pos": 82, "text": "2024: Adult Learners 36.2%"}
         ]
       },
       "mark": {
         "type": "text",
         "align": "right",
-        "dx": -8,
+        "dx": -6,
         "fontSize": 11,
         "fontWeight": 700,
         "fill": "#0f172a"
@@ -93,7 +94,7 @@
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
     "axis": {
@@ -110,6 +111,6 @@
       "titleFontSize": 12,
       "titleFontWeight": 600
     },
-    "text": {"font": "Plus Jakarta Sans"}
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

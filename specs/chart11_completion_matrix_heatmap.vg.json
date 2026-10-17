@@ -37,10 +37,10 @@
         "color": {
           "field": "Cohort_Completion_Rate_Pct",
           "type": "quantitative",
-          "title": "Completion Rate (%)",
+          "title": "Completion rate (%)",
           "scale": {
             "type": "linear",
-            "domain": [0, 100],
+            "domain": [40, 80],
             "scheme": "blues"
           },
           "legend": {
@@ -54,7 +54,7 @@
         "tooltip": [
           {"field": "Vocational_Sector", "type": "nominal", "title": "Sector"},
           {"field": "AQF_Level", "type": "nominal", "title": "Qualification Level"},
-          {"field": "Cohort_Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion Rate (%)"}
+          {"field": "Cohort_Completion_Rate_Pct", "type": "quantitative", "format": ".1f", "title": "Completion rate (%)"}
         ]
       }
     },
@@ -75,16 +75,16 @@
         "text": {"field": "Cohort_Completion_Rate_Pct", "type": "quantitative", "format": ".1f"},
         "color": {
           "condition": {
-            "test": "datum.Cohort_Completion_Rate_Pct > 55",
+            "test": "datum.Cohort_Completion_Rate_Pct > 65",
             "value": "#ffffff"
           },
-          "value": "#0f172a"
+          "value": "#1e293b"
         }
       }
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
     "axis": {
@@ -101,6 +101,6 @@
       "titleFontSize": 12,
       "titleFontWeight": 600
     },
-    "text": {"font": "Plus Jakarta Sans"}
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

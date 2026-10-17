@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 450,
+  "padding": {"top": 10, "left": 10, "bottom": 10, "right": 140},
   "autosize": {"type": "fit", "contains": "padding"},
   "data": {
     "url": "data/ncver_top10_trades.csv"
@@ -61,6 +62,7 @@
         "strokeWidth": {
           "field": "Highlight",
           "type": "nominal",
+          "sort": ["Carpenters", "Electricians", "Other"],
           "scale": {
             "domain": ["Carpenters", "Electricians", "Other"],
             "range": [3.2, 3.2, 1.6]
@@ -70,6 +72,7 @@
         "opacity": {
           "field": "Highlight",
           "type": "nominal",
+          "sort": ["Carpenters", "Electricians", "Other"],
           "scale": {
             "domain": ["Carpenters", "Electricians", "Other"],
             "range": [1, 1, 0.55]
@@ -102,7 +105,7 @@
     },
     {
       "transform": [
-        {"filter": "datum.Year_Key == 'Commencements_2025'"}
+        {"filter": "datum.Year_Key == 'Commencements_2025' && datum.Highlight != 'Other'"}
       ],
       "mark": {
         "type": "text",
@@ -120,7 +123,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Carpenters", "Electricians", "Other"],
-            "range": ["#e11d48", "#0284c7", "#64748b"]
+            "range": ["#e11d48", "#0284c7", "#94a3b8"]
           },
           "legend": null
         }
@@ -146,10 +149,31 @@
         "y": {"field": "val", "type": "quantitative"},
         "text": {"field": "text", "type": "nominal"}
       }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": "2025", "val": 1865, "text": "Other trades in grey"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": 16,
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "fill": "#94a3b8"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "nominal"},
+        "y": {"field": "val", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
     }
   ],
   "config": {
-    "font": "Plus Jakarta Sans",
+    "font": "Plus Jakarta Sans, sans-serif",
     "background": "transparent",
     "view": {"stroke": null},
     "axis": {
@@ -166,6 +190,6 @@
       "titleFontSize": 12,
       "titleFontWeight": 600
     },
-    "text": {"font": "Plus Jakarta Sans"}
+    "text": {"font": "Plus Jakarta Sans, sans-serif"}
   }
 }

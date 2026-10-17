@@ -21,23 +21,34 @@ const specs = [
   { id: "#vis-chart11", path: "specs/chart11_completion_matrix_heatmap.vg.json" }
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.fonts.ready.then(() => {
-    specs.forEach(spec => {
-      vegaEmbed(spec.id, spec.path, embedOptions)
-        .then(result => {
-          // Embed successful
-        })
-        .catch(err => {
-          console.error(`Error embedding ${spec.path}:`, err);
-          const container = document.querySelector(spec.id);
-          if (container) {
-            container.innerHTML = `<div style="padding:20px; color:#ef4444; background:#fef2f2; border-radius:8px;">
-              Failed to render chart: ${spec.path}. Check console for details.
-            </div>`;
-          }
-        });
-    });
+function renderAll() {
+  specs.forEach(spec => {
+    vegaEmbed(spec.id, spec.path, embedOptions)
+      .then(result => {
+        // Embed successful
+      })
+      .catch(err => {
+        console.error(`Error embedding ${spec.path}:`, err);
+        const container = document.querySelector(spec.id);
+        if (container) {
+          container.innerHTML = `<div style="padding:20px; color:#ef4444; background:#fef2f2; border-radius:8px;">
+            Failed to render chart: ${spec.path}. Check console for details.
+          </div>`;
+        }
+      });
   });
-});
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+  Promise.all([
+    document.fonts.load('400 12px "Plus Jakarta Sans"'),
+    document.fonts.load('700 12px "Plus Jakarta Sans"'),
+    document.fonts.load('700 12px "Outfit"')
+  ])
+    .then(() => {
+      renderAll();
+    })
+    .catch(() => {
+      renderAll();
+    });
+});
